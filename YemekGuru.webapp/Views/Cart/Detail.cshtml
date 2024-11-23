@@ -1,0 +1,129 @@
+@model CartDetailViewModel
+@{
+    var Cart = Model.CartModel;
+    var Restaurant = Model.RestaurantModel;
+    var CartItems = Model.CartItemModels;
+    ViewData["Title"]="Sepet";
+    var Alert = TempData["Alert"];
+}
+
+<div class="container" style="min-height: 75vh;">
+    <div class="my-3 d-flex align-items-center">
+        @if(Restaurant!=null)
+        {
+            <div>
+                <h2 class="me-3">@Restaurant.Name</h2>
+            </div>
+            <div>
+                <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@Restaurant.Id" class="btn fs-6 fw-bolder" style="color: #ff6600; border-radius: 10px;"><span class="me-2">Restauranta Git</span><i class="fa-solid fa-angle-right fa-beat-fade fa-lg"></i></a>
+            </div>
+        }
+        else
+        {
+            <div class="">
+                <h2 class="me-3 text-center">Sepetiniz Boş</h2>
+            </div>
+        }
+        
+    </div>
+    @if(TempData["Message"]!=null)
+    {
+        <div class="alert @Alert text-center">
+            @TempData["Message"]
+        </div>
+    }
+    <div class="row g-3 mb-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+            <div class="row g-0">
+                @foreach(var cartItem in CartItems)
+                {
+                    @if(cartItem.Product!=null)
+                    {
+                        <div>
+                            @await Html.PartialAsync("_CartItemCard",@cartItem)
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+            <div>
+                <ul class="list-group fw-bold mb-3" style="border-radius: 15px; border-style: solid; border-color: #ff6600;">
+                    <li class="list-group-item" style="background-color: #ff6600; border-radius: 10px;"><h4 class="text-center text-dark">Sipariş Özeti</h4></li>
+                    <li class="list-group-item">Ara Toplam Tutar : @Cart.TotalPrice TL</li>
+                    <li class="list-group-item">İndirim Tutarı : 0 TL</li>
+                    <li class="list-group-item">Toplam Net Tutar: @(Cart.TotalPrice) TL</li>
+                </ul>
+                
+                @if(CartItems.Count()>0)
+                {
+                    <div class="mb-3 p-1">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="text" name="Cupon" placeholder="Kupon kodu giriniz..." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Onalyla</button>
+                        </form>
+                    </div>
+                    <div>
+                        @if(Convert.ToDecimal(Restaurant.MinimumOrderPrice)>Cart.TotalPrice)
+                        {
+                            <div class="alert alert-danger py-1" role="alert">
+                                <i class="fa-solid fa-circle-exclamation fa-lg"></i>
+                                <span class="ms-3">Sipariş verebilmeniz için restaurantın minimum sipariş tutarını karşılamanız gerekir!</span>
+                                <div class="my-2 p-2 bg-black text-white" style="border-radius: 15px;">
+                                    @Restaurant.Name restoranın minimum sipariş tutarı : @Restaurant.MinimumOrderPrice TL
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex justify-content-end">
+                                <a href="/cart/ordersummary" class="btn text-white fs-6 fw-bolder" style="background-color: #ff6600; border-radius: 10px;"><span class="me-3">Sipariş Ver</span><i class="fa-solid fa-arrow-right fa-beat"></i></a>
+                            </div>
+                        }
+                    </div>
+                }
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+@* @section Scripts{
+    <script src="~/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.add-to-cart-form').submit(function (event) {
+                event.preventDefault(); // Form submit olayını engelle
+                var productId = $(this).find('[name="ProductId"]').val();
+                var returnUrl = $(this).find('[name="ReturnUrl"]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddCartItem", "Cart")',
+                    dataType: 'json',
+                    data: {
+                        ProductId: productId,
+                        ReturnUrl: returnUrl
+                    },
+                    success: function (result) {
+                        console.log(result.productId);
+                        console.log(result.returnUrl);
+                        var amountElement = $('#amount_'+result.productId);
+                        var priceElement = $('#price_'+result.productId);
+                        var amount = parseInt(amountElement.text());
+                        amount++;
+                        amountElement.text(amount);
+                        console.log(result.Price);
+                        priceElement.text(amount*result.Price);
+
+                        alertify.success("+1 ürün daha eklendi!");
+                    },
+                    error: function (error) {
+                        console.error('Hata:', error);
+                        alertify.error("Hata!")
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+} *@

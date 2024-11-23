@@ -1,0 +1,51 @@
+@model RegisterModel
+@{
+    ViewData["Title"]="Kayıt";
+    var Alert = TempData["Alert"];
+}
+
+<div class="container d-flex justify-content-center">
+    @if(TempData["Message"]!=null)
+    {
+        <div class="alert @Alert" role="alert">
+            A simple success alert—check it out!
+        </div>
+    }
+    <div class="my-5 p-4" style="width: 500px; background-color: #ff6600; border-radius: 25px;">
+        <div>
+            <div class="d-flex justify-content-center mb-3">
+                <img src="~/Icons/yemekguru.jpg" alt="" style="width: 100px;">
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <h1 class="h3 text-white">Register</h1>
+            </div>
+        </div>
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="mb-4">
+                <input asp-for="UserName" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.UserName)">
+                <span class="text-white" asp-validation-for="UserName"></span>
+            </div>
+            <div class="mb-4">
+                <input asp-for="EmailAddress" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.EmailAddress)">
+                <span class="text-white" asp-validation-for="EmailAddress"></span>
+            </div>
+            <div class="mb-4">
+                <input asp-for="Password" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.Password)">
+                <span class="text-white" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-4">
+                <input asp-for="RePassword" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.RePassword)">
+                <span class="text-white" asp-validation-for="RePassword"></span>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn bg-light fw-bolder" style="color: #ff6600;">Kayıt Ol</button>
+            </div>
+        </form>
+        <div>
+            <div class="d-flex justify-content-center mb-2">
+                <a asp-controller="Account" asp-action="Login" class="text-white" style="color: #ff6600;">Zaten hesabım var</a>   
+            </div>
+        </div>  
+    </div>
+    
+</div>

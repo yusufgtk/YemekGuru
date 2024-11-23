@@ -1,0 +1,88 @@
+@model PaymentModel
+@{
+    Layout="_LayoutNull";
+    ViewData["Title"] = "Ödeme Sayfası";
+}
+<div style="background-color: #ff6600; height: 1500px;">
+    <div class="container py-5">
+        <div class="mb-5">
+            <h1 class="text-center text-white">YemeK Guru Ödeme Sayfası</h1>
+        </div>
+        <div class="p-3 bg-success d-flex justify-content-center" style="border-radius: 35px;">
+            <h6 class="text-center text-white">Ödenecek Tutar : @ViewBag.TotalPrice TL</h6>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="container my-5 py-5">
+                    <div class="row d-flex justify-content-center py-5">
+                        <div class="col-md-7 col-lg-5 col-xl-4">
+                            <div class="card" style="border-radius: 20px; -webkit-box-shadow: 0px 0px 20px 25px rgba(0,0,0,0.5);
+                            -moz-box-shadow: 0px 0px 20px 25px rgba(0,0,0,0.5);
+                            box-shadow: 0px 0px 20px 25px rgba(0,0,0,0.5);">
+                                <div class="card-body p-4">
+                                    <form asp-controller="Cart" asp-action="Payment" method="post">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <div class="form-outline">
+                                                <input asp-for="CardNumber" id="typeText" class="form-control form-control-lg" size="16"
+                                                placeholder="1234567890123457" minlength="16" maxlength="16" value="5528790000000008"/>
+                                                <label class="form-label" asp-for="CardNumber">Kart Numarası</label>
+                                                <span asp-validation-for="CardNumber" class="text-danger"></span>
+                                            </div>
+                                            <div class="d-block">
+                                                <div class="mb-3">
+                                                    <i class="fa-brands fa-cc-visa fa-2xl text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <i class="fa-brands fa-cc-mastercard fa-2xl"></i>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            </div>
+                            
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <div class="form-outline">
+                                                    <input asp-for="CardName" id="typeName" class="form-control form-control-lg" siez="17"
+                                                    placeholder="Ad Soyad" value="John Doe"/>
+                                                    <label class="form-label" asp-for="CardName">Kart'ın üzerindeki ad soyad</label>
+                                                    <span asp-validation-for="CardName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                            
+                                            <div class="d-flex justify-content-between align-items-center pb-2">
+                                                <div class="form-outline">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <input asp-for="Month" id="typeExp" class="form-control form-control-lg" placeholder="MM" id="exp" minlength="1" maxlength="2" style="width: 70px;" value="12"/>
+                                                        </div>
+                                                        <div class="mx-1 fs-4">/</div>
+                                                        <div>
+                                                            <input asp-for="Year" id="typeExp" class="form-control form-control-lg" placeholder="YYYY"
+                                                            size="4" id="exp" minlength="4" maxlength="4" style="width: 80px;" value="2030"/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <label class="form-label" for="typeExp">Son kullanma tarihi</label>
+                                                    <span asp-validation-for="Month" class="text-danger me-2"></span>
+                                                    <span asp-validation-for="Year" class="text-danger"></span>
+                                                </div>
+                                            <div class="form-outline">
+                                                <input asp-for="CVV" id="typeText2" class="form-control form-control-lg"
+                                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" style="width: 100px;" value="123"/>
+                                                <label class="form-label" for="typeText2">Cvv</label>
+                                                <span asp-validation-for="CVV" class="text-danger"></span>
+                                            </div>
+                                            <button type="submit" class="btn btn-info btn-lg btn-rounded">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

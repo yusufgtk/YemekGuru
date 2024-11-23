@@ -1,0 +1,51 @@
+@model LoginModel
+@{
+    ViewData["Title"]="Giriş";
+    var Alert=TempData["Alert"];
+}
+
+@if(TempData["Message"]!=null)
+{
+    <div class="d-flex justify-content-center mt-3">
+        <div class="alert @Alert" role="alert">
+            @TempData["Message"]
+        </div>
+    </div>
+    
+}
+<div class="container d-flex justify-content-center">
+    <div class="my-5 p-4 p-sm-4 p-md-4 p-lg-4 p-xl-4" style="width: 500px; background-color: #ff6600; border-radius: 25px;">
+        <div>
+            <div class="d-flex justify-content-center mb-3">
+                <img src="~/Icons/yemekguru.jpg" alt="" style="width: 100px;">
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <h1 class="h3 text-white">Giriş</h1>
+            </div>
+        </div>
+        <div>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <div class="mb-4">
+                    <input asp-for="UserName" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.UserName)">
+                    <span class="text-white" asp-validation-for="UserName"></span>
+                </div>
+                <div class="mb-4">
+                    <input asp-for="Password" class="form-control"  placeholder="@Html.DisplayNameFor(i=>i.Password)">
+                    <span class="text-white" asp-validation-for="Password"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn bg-light fw-bolder" style="color: #ff6600;">Giriş Yap</button>
+                </div>
+            </form>
+            <div>
+                <div class="d-flex justify-content-center mb-2">
+                    <a asp-controller="Account" asp-action="ForgotPassword" class="text-white" style="color: #ff6600;">Şifremi Unuttum</a>   
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a asp-controller="Account" asp-action="Register" class="text-white fw-bolder" style="color: #ff6600;">Kayıt Ol</a>
+                </div>
+            </div>  
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,254 @@
+@model SellerIndexViewModel
+@{
+    var Restaurant = Model.RestaurantModel;
+    var TotalActiveOrdersCount = Model.TotalActiveOrdersCount;
+    var TotalSetOutOrdersCount = Model.TotalSetOutOrdersCount;
+    var TotalCanceledOrdersOrdersCount = Model.TotalCanceledOrdersOrdersCount;
+    var TotalComplatedOrdersCount = Model.TotalComplatedOrdersCount;
+    var TotalOrdersCount = Model.TotalOrdersCount;
+    var ProductsCount = Model.ProductsCount;
+    var ActiveProductsCount = Model.ActiveProductsCount;
+    var CommentsCount = Model.CommentsCount;
+    Layout="_LayoutSeller";
+    ViewData["Title"] = "Satıcı Paneli";
+    var Alert = TempData["Alert"];
+}
+<meta http-equiv="refresh" content="120">
+<div class="@(Restaurant.IsActive==true?"bgSuccessColor":"bgDangerColor")">
+    <div class="container py-5">
+        <div class="my-5">
+            <h3 class="text-center text-black fw-bold">Genel Bilgiler</h3>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            @if(Restaurant.IsActive==true)
+            {
+                <div class="alert @Alert text-center" role="alert">
+                    <i class="fa-solid fa-lock-open fa-fade fa-xl"></i><span class="mx-5 fw-bold">@TempData["Message"]</span><i class="fa-solid fa-lock-open fa-fade fa-xl"></i>
+                </div>
+            }
+            else if(Restaurant.IsActive==false)
+            {
+                <div class="alert @Alert text-center" role="alert">
+                    <i class="fa-solid fa-lock fa-fade fa-xl"></i><span class="mx-5 fw-bold">@TempData["Message"]</span><i class="fa-solid fa-lock fa-fade fa-xl"></i>
+                </div>
+            }
+            
+        }
+        @if(TempData["MessageWarning"]!=null)
+        {
+            <div class="alert @Alert text-center" role="alert">
+                <i class="fa-solid fa-triangle-exclamation fa-fade fa-xl"></i><span class="mx-5">@TempData["MessageWarning"]</span><i class="fa-solid fa-triangle-exclamation fa-fade fa-xl"></i>
+            </div>
+        }
+        <div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <a href="" class="card bg-dark mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header d-flex justify-content-between">
+                            <h4 class="fw-bold">Restaurant Bilgisi</h4>
+                            <div>
+                                <form asp-controller="Seller" asp-action="RestaurantOpenClose" method="post">
+                                    <div class="form-check form-switch">
+                                        <input name="restaurantId" type="hidden" value="@Restaurant.Id">
+                                        <!-- <input class="form-check-input" name="isActive" type="hidden" value="@Restaurant.IsActive"> -->
+                                        <label class="form-check-label" for="isActive">Restaurant Durumu: 
+                                            @if(Restaurant.IsActive==true)
+                                            {
+                                                
+                                                <span class="bg-success px-2 pb-2 me-2" style="border-radius: 15px;">Açık</span><i class="fa-solid fa-lock-open fa-fade fa-xl me-2 text-success"></i>
+                                            }
+                                            else{
+                                                <span class="bg-danger px-2 pb-1 me-2" style="border-radius: 15px;">Kapalı</span><i class="fa-solid fa-lock fa-fade fa-xl me-2 text-danger"></i>
+                                            }
+                                            @if(Restaurant.IsActive==true)
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-primary" style="border-radius: 15px;">Restaurantı Kapat</button>
+                                            }else{
+                                                <button type="submit" class="btn btn-sm btn-primary" style="border-radius: 15px;">Restaurantı Aç</button>
+                                            }
+                                            
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body row">
+                            <div class="col-3 d-none d-md-block d-lg-block d-xl-block d-xxl-block">
+                                @if(Restaurant.ImageUrl!=null)
+                                {
+                                    <img src="~/RestaurantImages/@Restaurant.ImageUrl" alt="" width="100%" height="100%">
+                                }
+                                else
+                                {
+                                    <img src="~/RestaurantImages/yemekguru.jpg" alt="" width="100%" height="100%">
+                                }
+                            </div>
+                            <div class="col-9">
+                                <ul class="list-group bg-transparent">
+                                    <li class="list-group-item bg-transparent text-white"><h5 class="card-title">@Restaurant.Name</h5></li>
+                                    @if(Restaurant.Description!=null)
+                                    {
+                                        <li class="list-group-item bg-transparent  text-white">@Html.DisplayNameFor(i=>Restaurant.Description) : @Restaurant.Description</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item bg-transparent  text-white">@Html.DisplayNameFor(i=>Restaurant.Description) : <span class="bg-danger text-white fw-bold p-1" style="border-radius: 15px;">Girilmedi!</span></li>
+                                    }
+                                    @if(Restaurant.OpeningTime!=null)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.OpeningTime) : @Restaurant.OpeningTime</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.OpeningTime) : <span class="bg-danger text-white fw-bold p-1" style="border-radius: 15px;">Girilmedi!</span></li>
+                                    }
+                                    @if(Restaurant.ClosingTime!=null)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.ClosingTime) : @Restaurant.ClosingTime</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.ClosingTime) : <span class="bg-danger text-white fw-bold p-1" style="border-radius: 15px;">Girilmedi!</span></li>
+                                    }
+                                    
+                                    @if(Restaurant.DeliveryTime!=null)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.DeliveryTime) : @Restaurant.DeliveryTime</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.DeliveryTime) : <span class="bg-danger text-white fw-bold p-1" style="border-radius: 15px;">Girilmedi!</span></li>
+                                    }
+                                    <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.MinimumOrderPrice) : @Restaurant.MinimumOrderPrice TL</li>
+                                    @if(Restaurant.Rating>=4)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.Rating) : <span class="me-2">@Restaurant.Rating</span><i class="fa-solid fa-star fa-lg"></i></li>
+                                    }
+                                    else if (Restaurant.Rating>=2.5)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.Rating) : <span class="me-2">@Restaurant.Rating</span><i class="fa-regular fa-star-half-stroke fa-lg"></i></li>
+                                    }
+                                    else if(Restaurant.Rating<2.5)
+                                    {
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.Rating) : <span class="me-2">@Restaurant.Rating</span><i class="fa-regular fa-star fa-lg"></i></li>
+                                    }
+                                    else{
+                                        <li class="list-group-item bg-transparent text-white">@Html.DisplayNameFor(i=>Restaurant.Rating) : <span class="bg-warning text-dark fw-bold p-1" style="border-radius: 15px;">Değerlendirme yok!</span></li>
+                                    }
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/seller/activeorders" class="card bg-warning mb-3 text-black text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Aktif Sipariş Sayısı</div>
+                        <div class="card-body  card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><img src="~/Gifs/chef2.gif" alt="Hazırlanıyor..." class="me-2" style="width: 75px; height: 75px; border-radius: 20px;"><span>@TotalActiveOrdersCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/seller/setoutorders" class="card bg-warning mb-3 text-black text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Yola Çıkan Sipariş Sayısı</div>
+                        <div class="card-body  card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><h5 class="card-title"><img src="~/Gifs/order.gif" alt="Hazırlanıyor..." class="me-2" style="width: 75px; height: 75px; border-radius: 20px;"><span>@TotalSetOutOrdersCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/seller/completedorders" class="card bg-success mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Teslim Edilen Sipariş Sayısı</div>
+                        <div class="card-body  card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-square-check fa-2xl me-3"></i><span>@TotalComplatedOrdersCount Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/seller/canceledorders" class="card bg-danger mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">İptal Edilen Sipariş Sayısı</div>
+                        <div class="card-body  card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-rectangle-xmark fa-2xl me-3"></i><span>@TotalCanceledOrdersOrdersCount Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <div class="card bg-primary mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Alınan Toplam Sipariş Sayısı</div>
+                        <div class="card-body  card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-list-check fa-xl me-3"></i><span>@TotalOrdersCount Adet</span></h5>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/seller/listproducts" class="card mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px; background-color: #ff6600;">
+                        <div class="card-header fw-bold">Toplam Yemek Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="text-center"><i class="fa-solid fa-pizza-slice fa-xl me-3"></i><span>@ProductsCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <div class="card mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px; background-color: #046e00;">
+                        <div class="card-header fw-bold">Yayında Olan Yemek Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="text-center"><i class="fa-solid fa-pizza-slice fa-xl me-3"></i><span>@ActiveProductsCount Adet</span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card bg-danger mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Restauranta Yapılan Toplam Yorum Sayısı</div>
+                        <div class="card-body card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-message fa-xl me-3"></i><span>@CommentsCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <div class="card mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px; background-color: @(Restaurant.IsApproved==true?"#004225":"#7D0A0A");">
+                        <div class="card-header fw-bold">Kısıtlanma Durumu</div>
+                        <div class="card-body card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title">
+                                @if(Restaurant.IsApproved==true)
+                                {
+                                    <i class="fa-solid fa-check fa-xl me-2"></i><span>Kısıtlanma Yok</span>
+                                }
+                                else
+                                {
+                                    <i class="fa-solid fa-ban fa-beat-fade fa-xl me-2"></i><span>Banlandın!</span>
+                                }
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card bg-black mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold">Kasadaki Toplam Tutar</div>
+                        <div class="card-body card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-turkish-lira-sign fa-xl me-3"></i></i><span>5.852,75 TL</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none" style="width: 100%; border-radius: 25px; background-color: #000;">
+                        <div class="card-header fw-bold">Havuzdaki Toplam Tutar</div>
+                        <div class="card-body card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-turkish-lira-sign fa-xl me-3"></i></i><span>5.852,75 TL</span></h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-warning text-center" role="alert">
+                    <i class="fa-solid fa-circle-exclamation fa-xl"></i></i><span class="mx-3">Restaurant kapalı olduğunda kullanıcılar sipariş veremezler. Satış yapmak istemediğinizde restaurantı kapatınız!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

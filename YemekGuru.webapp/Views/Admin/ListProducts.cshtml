@@ -1,0 +1,192 @@
+@model List<ProductModel>
+
+@{
+    
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Ürünler";
+    var Alert = TempData["Alert"];
+    var ReturnUrl="/admin/listUsers";
+}
+
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Ürünler Listesi (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="fw-bold" style="color: #ff6600;"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        <div class="mb-5">
+            <form asp-controller="Admin" asp-action="ListProducts" method="post">
+                <div class="input-group mb-3">
+                    <input name="search" type="text" class="form-control" placeholder="Ürün Id veya ürün adını giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color: #ff6600; border-style: solid; border-width: 2px;">
+                    <button class="btn px-3" type="submit" id="button-addon2" style="border-width: 2px; border-color: #ff6600; color: #ff6600;"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                </div>
+            </form>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Satıcı başvurusu bulunmamaktadır!</span>
+            </div>
+        }
+        else
+        {
+            <div>
+                <table class="table shadow-lg text-white" style=" border-radius: 10px; background-color: #ff7e29;">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 150px;">Ürün Id</th>
+                            <th scope="col" style="width: 250px;">Resim</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Fiyat</th>
+                            <th scope="col">Satışta mı?</th>
+                            <th scope="col" style="width: 190px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row">@item.Id</th>
+                                <td>
+                                    @if(item.ImageUrl!=null)
+                                    {
+                                        <img src="~/ProductImages/@item.ImageUrl" alt="@item.Name" width="100%" height="200px" style="border-style: solid; border-color: #000; border-radius: 20px; border-width: 2px;">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/ProductImages/yemekguru.jpg" alt="@item.Name" width="100%" height="200px" style="border-style: solid; border-color: #000; border-radius: 20px; border-width: 2px;">
+                                    }
+                                </td>
+                                <td>@item.Name</td>
+                                <td>
+                                    @if(item.PreviousPrice>item.Price)
+                                    {
+                                        <div class="d-inline-block bg-light p-2" style="border-radius: 20px;">
+                                            <div>
+                                                <span class="text-decoration-line-through text-danger">@item.PreviousPrice</span>
+                                            </div>
+                                            <div class="text-success">
+                                                <span class="fw-bold me-2">@item.Price TL</span><i class="fa-solid fa-down-long fa-lg"></i>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-inline-block bg-light p-2" style="border-radius: 20px;">
+                                            <span class="fw-bold" style="color: #ff6600;">@item.Price TL</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @if(item.IsActive==true)
+                                    {
+                                        <div class="text-success d-inline-block bg-light p-2" style="border-radius: 20px;">
+                                            <i class="fa-solid fa-check fa-lg"></i>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="text-danger d-inline-block bg-light p-2" style="border-radius: 20px;">
+                                            <i class="fa-solid fa-xmark fa-lg"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div>
+                                            <form asp-controller="Admin" asp-action="DeleteProduct" method="post">
+                                                <input type="hidden" name="productId" value="@item.Id">
+                                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash fa-xl"></i></button>
+                                            </form>
+                                        </div>
+                                        <div class="me-2">
+                                            <form asp-controller="Admin" asp-action="IsActiveProduct" method="post">
+                                                <input type="hidden" name="productId" value="@item.Id">
+                                                @if(item.IsActive==true)
+                                                {
+                                                    <button type="submit" class="btn btn-danger">Satışa Kapat</button>
+                                                }
+                                                else
+                                                {
+                                                    <button type="submit" class="btn btn-success">Satışa Aç</button>
+                                                }
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">@item.Name</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/ProductImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/ProductImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">Ürün Id : @item.Id</li>
+                                                        <li class="list-group-item">Ürün Açıklaması : @item.Description</li>
+                                                        <li class="list-group-item">Ürün İçeriği : @item.Content</li>
+                                                        <li class="list-group-item">Ürün Önceki Fiyatı : @item.PreviousPrice TL</li>
+                                                        <li class="list-group-item">Ürün Fiyatı : @item.Price TL</li>
+                                                        <li class="list-group-item">Kalori Miktarı : @item.Calorie</li>
+                                                        <li class="list-group-item">Satışta mı? : 
+                                                            @if(item.IsActive==true)
+                                                            {
+                                                                <span class="me-3">Evet</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="me-3">Hayır</span>
+                                                            }
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer d-flex justify-content-between">
+                                                        @if(item.RestaurantId!=null)
+                                                        {
+                                                            <a asp-controller="Admin" asp-action="RestaurantDetail" asp-route-restaurantId="@item.RestaurantId" type="button" class="btn btn-primary"><span>Restoranta Git</span></a>
+                                                        }
+                                                        
+                                                        <button type="button" class="btn btn-danger ms-auto" data-bs-dismiss="modal">Kapat</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,47 @@
+@model CartItemModel
+@{
+  var ReturnUrl="/cart/detail";
+}
+
+<div class="card mb-3 w-100" style="border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 15px;">
+    <div class="row g-0">
+      <div class="col-3">
+        <img src="~/ProductImages/@Model.Product.ImageUrl" class="img-fluid w-100" style="height: 100%; border-radius: 15px;" alt="@Model.Product.Name">
+      </div>
+      <div class="col-9">
+        <div class="card-body">
+            <div class="row g-0">
+                <div class="col-7">
+                    <h5 class="card-title">@Model.Product.Name</h5>
+                    <p class="card-text">@Model.Product.Content</p>
+                    <p class="card-text"><small class="text-body-secondary">@Model.Product.Calorie</small></p>
+                </div>
+                <div class="col-3 d-flex align-items-center justify-content-center">
+                  @if(Model.Product.Price<Model.Product.PreviousPrice)
+                  {
+                    <div>
+                      <div>
+                        <span class="fw-bolder fs-6 text-decoration-line-through text-danger">@(Model.Product.PreviousPrice*Model.Amount) TL</span>
+                      </div>
+                      <div>
+                        <span class="fw-bolder fs-5 text-success">@(Model.Product.Price*Model.Amount) TL</span>
+                      </div>
+                    </div>
+                    
+                  }else{
+                    <div>
+                      <span class="fw-bolder fs-5" style="color: #ff6600;">@(Model.Product.Price*Model.Amount) TL</span>
+                    </div>
+                  }
+                  
+                </div>
+                <div class="col-2 d-flex justify-content-end align-content-center flex-wrap">
+                    <div class="my-1">
+                      <span class="fs-5 fw-bolder me-2">@Model.Amount</span><small>Adet</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

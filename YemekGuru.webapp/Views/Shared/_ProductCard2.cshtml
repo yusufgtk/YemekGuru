@@ -1,0 +1,94 @@
+@model ProductModel
+@{
+  var ReturnUrl="/Home/ListProducts";
+}
+<div id="#@Model.Id" class="card mb-3" style="width: 100%; border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 15px; max-height: 225px;" title="@Model.Description">
+  <div class="row g-0">
+    <div class="col-4">
+      <div class="w-100" style="height: 175px;">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+          <img src="~/ProductImages/@Model.ImageUrl" class="img-fluid w-100" alt="@Model.Name" style="height: 100%; border-radius: 10px; max-height: 200px;">
+        }
+        else
+        {
+          <img src="~/ProductImages/yemekguru.jpg" class="img-fluid w-100" alt="@Model.Name" style="height: 100%; border-radius: 10px; max-height: 200px;">
+        }
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="row g-0">
+        <div class="col-10">
+          <div class="card-body">
+              <h5 class="card-title">@Model.Name</h5>
+              
+              <p class="card-text" style="font-size: 15px;">@Model.Content</p>
+              
+              <div class="row g-0">
+                <div class="col-7">
+                  <small class="card-text">Kalori : @Model.Calorie</small>
+                </div>
+                <div class="col-5  justify-content-end">
+                  @if(@Model.Price<@Model.PreviousPrice)
+                  {
+                    <div class="fs-6 text-danger text-sm-end text-decoration-line-through">@Model.PreviousPrice TL</div>
+                    <div class="fw-bolder text-success fs-5 text-end">@Model.Price TL</div>
+                  }
+                  else{
+                    <div class="fw-bolder fs-5 text-end" style="color: #ff6600;">@Model.Price TL</div>
+                  }
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+          <div class="row g-2">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+              <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@Model.RestaurantId" class="btn btn-primary"><i class="fa-solid fa-arrow-right fa-beat"></i></a>
+            </div>
+            <div class="col-12 d-flex align-items-center justify-content-center">
+              <form asp-controller="Cart" asp-action="AddCartItem" method="post">
+                <input id="ProductId" type="hidden" name="ProductId" value="@Model.Id">
+                <input id="ReturnUrl" type="hidden" name="ReturnUrl" value="@ReturnUrl">
+                <button id="AddCartItem" type="submit" class="btn" style="background-color: #ff6600;"><i class="fa-solid fa-plus text-white"></i></button>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts{
+  <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#AddCartItem').click(function () {
+              $.ajax({
+                  type: 'Post',
+                  url: '@Url.Action("AddCartItem")',
+                  dataType: 'json', // Veri tipini JSON olarak ayarla
+                  data: {
+                      ProductId: $('#ProductId').val(),
+                      ReturnUrl: $('#ReturnUrl').val(),
+                  },
+                  success: function (data) {
+                      // Action methodundan dönen JSON verisini kullanma
+                      console.log(data.productId); // productId özelliğine eriş
+                      console.log(data.returnUrl); // returnUrl özelliğine eriş
+
+                      // Başka işlemler gerçekleştirme
+                      // Örneğin, bir mesaj gösterme
+                      alert("Ürün ID: " + data.productId + ", Return URL: " + data.returnUrl);
+                  },
+                  error: function (error) {
+                      console.error('Hata:', error);
+                  }
+              });
+              return false;
+          });
+      });
+  </script> -->
+}

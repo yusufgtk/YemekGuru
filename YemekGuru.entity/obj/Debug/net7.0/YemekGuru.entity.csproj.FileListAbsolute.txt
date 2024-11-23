@@ -1,0 +1,11 @@
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\bin\Debug\net7.0\YemekGuru.entity.deps.json
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\bin\Debug\net7.0\YemekGuru.entity.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\bin\Debug\net7.0\YemekGuru.entity.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.AssemblyInfoInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.AssemblyInfo.cs
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\refint\YemekGuru.entity.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\YemekGuru.entity.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.entity\obj\Debug\net7.0\ref\YemekGuru.entity.dll

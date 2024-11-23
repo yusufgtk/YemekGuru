@@ -1,0 +1,153 @@
+@model RestaurantDetailViewModel
+
+@{
+    var Restaurant = Model.RestaurantModel;
+    var Products = Model.ProductModels;
+    var Comments = Model.CommentModels;
+    var TotalCommentsCount = Model.TotalCommentCount;
+    ViewData["Title"] = Restaurant.Name;
+    var Alert = TempData["Alert"];
+}
+
+
+@if(Restaurant.IsApproved==false)
+{
+    <div class="container py-5" style="min-height: 75vh;">
+        <div class="alert alert-danger  text-danger mb-5">
+            Bu restorant geçici süreliğine hizmet veremiyor!
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="/home/index" class="btn text-white" style="background-color: #ff6600;">Ana Sayfaya Git</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="my-4">
+            <h1 class="h1 text-center">@Restaurant.Name</h1>
+        </div>
+        <div>
+            <div class="row g-0 border rounded-3 my-3 border border-3 shadow-lg @(Restaurant.IsActive==true?"border-success":"border-danger")">
+                <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xxl-4">
+                    @if(Restaurant.ImageUrl!=null)
+                    {
+                        <img src="~/RestaurantImages/@Restaurant.ImageUrl" class="card-img-top rounded-5" alt="..." style="max-width: 100%; max-height: 300px;">
+                    }
+                    else
+                    {
+                        <img src="~/RestaurantImages/yemekguru.jpg" class="card-img-top rounded-5" alt="..." style="max-width: 100%; height: 100%;">
+                    }
+                </div>
+                <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 col-xxl-8">
+                    <ul class="list-group w-100 fw-normal">
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.Description) : @Restaurant.Description</li>
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.OpeningTime) : @Restaurant.OpeningTime</li>
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.ClosingTime) : @Restaurant.ClosingTime</li>
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.DeliveryTime) : @Restaurant.DeliveryTime dk</li>
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.MinimumOrderPrice) : @Restaurant.MinimumOrderPrice TL</li>
+                        <li class="list-group-item">@Html.DisplayNameFor(model => model.RestaurantModel.Rating) : @Restaurant.Rating</li>
+                        @if(Restaurant.IsActive==true)
+                        {
+                            <li class="list-group-item">Restaurant Durumu : <span class="fw-bolder text-success me-2">Açık</span><i class="fa-solid fa-lock-open text-success"></i></li>
+                        }
+                        else{
+                            <li class="list-group-item">Restaurant Durumu : <span class="fw-bolder text-danger me-2">Kapalı</span><i class="fa-solid fa-lock text-danger"></i></li>
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            @if(TotalCommentsCount>0)
+            {
+                <div class="mb-1 my-5">
+                    <h5 class="text-black">Yorumlar <small style="font-size: 15px;">(@TotalCommentsCount Adet)</small></h5>
+                </div>
+                <ul class="list-group list-group-horizontal overflow-auto" style="border-color: #ff6600; border-style: solid; height: 125px; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+                    @foreach(var c in Comments)
+                    {
+                        <li class="list-group-item mx-2 bg-transparent border border-0">
+                            <div class="row p-1" style="height: 100%; width: 450px; border-radius: 18px; border-style: solid; border-color: gray;">
+                                <div class="col-2 p-3">
+                                    <img src="~/UserImages/user.png" alt="" style="width: 40px; height: 100%;">
+                                </div>
+                                <div class="col-10 p-1">
+                                    <div>
+                                        <h6 class="m-0" style="font-size: 16px;">@c.UserName</h6>
+                                    </div>
+                                    <div>
+                                        <p class="text-truncate m-0" style="font-size: 14px;">
+                                            @c.Description
+                                        </p>
+                                        <small style="font-size: 12px;">
+                                            @c.CreatedAt.ToShortDateString()
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+            
+        </div>
+        <div>
+            <div>
+                <h3 class="text-center text-white mt-5 mb-0 rounded-0 pt-3" style="background-color: #ff6600; border-top-left-radius: 25px; border-top-right-radius: 25px;">Ürünler(@Products.Count)</h3>
+                <div class="my-0" style="background: rgb(255,255,255);
+                background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,102,0,1) 100%); height: 100px;">
+                </div>
+            </div>
+            @if(TempData["Message"]!=null)
+            {
+                <div class="alert @Alert text-center">
+                    <i class="fa-solid fa-lock fa-beat-fade fa-xl"></i><span class="mx-5">@TempData["Message"]</span><i class="fa-solid fa-lock fa-beat-fade fa-xl"></i>
+                </div>
+            }
+            <div class="row px-2">
+                @foreach(var product in Products)
+                {
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 d-flex justify-content-center">
+                        @await Html.PartialAsync("_ProductCard",product)
+                    </div>
+                }
+            </div>
+        </div>
+    
+    </div>
+}
+@* @section Scripts{
+    <script src="~/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.add-to-cart-form').submit(function (event) {
+                event.preventDefault(); // Form submit olayını engelle
+                var productId = $(this).find('[name="ProductId"]').val();
+                var returnUrl = $(this).find('[name="ReturnUrl"]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddCartItem", "Cart")',
+                    dataType: 'json',
+                    data: {
+                        ProductId: productId,
+                        ReturnUrl: returnUrl
+                    },
+                    success: function (result) {
+                        console.log(result.productId);
+                        console.log(result.returnUrl);
+                        alertify.success("Ürün sepete eklendi!");
+                    },
+                    error: function (error) {
+                        console.error('Hata:', error);
+                        alertify.danger("Hata!")
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}*@
+
+

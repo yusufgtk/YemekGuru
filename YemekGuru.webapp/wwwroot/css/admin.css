@@ -1,0 +1,14 @@
+.link {
+    background-color: black;
+    color: #ff6600;
+    border-color: #ff6600; /* Initial border color */
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 20px;
+    transition: .5s all;
+    text-decoration: none; /* Remove default text decoration */
+}
+
+.link:hover {
+    color: white;
+}

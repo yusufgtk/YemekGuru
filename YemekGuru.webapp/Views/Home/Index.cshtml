@@ -1,0 +1,91 @@
+﻿@model HomePageViewModel
+@{
+    var Restaurants = Model.RestaurantModels;
+    var Categories = Model.CategoryModels;
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="pb-3">
+    <div>
+        <img src="~/gifs/header.gif" alt="" class="w-100" style="height: 400px;">
+        <div>
+            <marquee class="fs-5 py-1" style="background-color: #ffb5b5;"><i class="fa-solid fa-robot fa-lg me-2"></i>Guru AI <span class="text-success">(Akıllı Chatbot)</span> çok yakında!</marquee>
+        </div>
+    </div>
+    <div>
+        <div class="container mt-2 mb-4">
+            <div class="mb-5">
+                <span class="text-white fw-bold py-1 px-3" style="background-color: #ff6600; border-radius: 20px;"><span>@ViewBag.City.Name </span><i class="fa-solid fa-chevron-right fa-lg mx-2"></i><span>@ViewBag.District.Name</span>
+            </div>
+            <div>
+                <h3 class="h3 mb-2">Kategoriler</h3>
+            </div>
+            <div>
+                <ul class="list-group list-group-horizontal d-flex flex-nowrap overflow-auto pt-2 pb-3 px-3" style="overflow-x: scroll; scroll-behavior: smooth; border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 20px 20px 5px 5px; background-color: #ff6600;">
+                    @foreach(var category in Categories)
+                    {
+                        <a asp-controller="Home" asp-action="ListProducts" asp-route-categoryId="@category.Id"  class="list-group-item d-inline-block text-decoration-none text-black mt-3 border border-0" style="background-color: #ff6600;">
+                            @await Html.PartialAsync("_CategoryCard",@category)
+                        </a>
+    
+                    }
+                    
+                </ul>
+            </div>
+            
+        </div>
+        <div>
+            <div>
+                <marquee class="py-0"direction="right" scrollamount="4">
+                    <span class="fs-5 fw-bolder" style="color: #ff6600;">Yemek Guru bir tık uzağınızda!</span>
+                    <img src="~/gifs/chef.gif" alt="" style="height: 75px;">
+                </marquee>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h1 class="text-center text-white mt-4 mb-0 py-2" style="background-color: #ff6600; border-top-left-radius: 25px; border-top-right-radius: 25px;">Restauranlar</h1>
+                <div class="my-0" style="background: rgb(255,255,255);
+                background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,102,0,1) 100%); height: 100px;">
+                    <div class="row justify-content-center py-2">
+                        <div class="col-8">
+                            <form asp-controller="Home" asp-action="Index" class="d-flex" role="search" method="post">
+                                <input class="form-control me-1" type="search" placeholder="Restaurant adı giriniz..." aria-label="Search" name="searchName" style="border-color: #ff6600; border-style: solid; border-width: 2px; border-radius: 155px;">
+                                <button class="btn bg-white" style="color: #ff6600; border-color: #ff6600; border-width: 2px; border-radius: 30px;" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            @if(Restaurants.Count()>0)
+            {
+                <div class="row mt-0 mb-5">
+                    @foreach(var restaurant in Restaurants)
+                    {
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex justify-content-center mb-5">
+                            @await Html.PartialAsync("_RestaurantCard",restaurant)
+                        </div>
+                    }
+                </div> 
+            }
+            else
+            {
+                <div class="alert alert-warning text-center" role="alert">
+                    Yakınınızda böyle bir restaurant yoktur!
+                </div>
+            }
+            
+        </div>
+        
+    </div>
+</div>
+<div id="chatbot-container" style="position: fixed; bottom: 10px; right: 10px;">
+    <button id="onBtn" onclick="toggleChatbot()" style="background-color:#ff7700; border-radius:25px;">
+    <div class="d-flex justify-content-center shadow-lg py-1">
+        <img src="~/Gifs/guru-chef.gif" style="height:100px; border-style:solid; border-radius:25px; border-color:#ff1100;">
+    </div>Guru Chef</button>
+    @await Html.PartialAsync("_Chatbot")
+</div>
+
+

@@ -1,0 +1,188 @@
+@model OrderManagerViewModel
+@{
+    Layout="_LayoutAdmin";
+    ViewData["Title"]="Sipariş Yönetimi";
+    int TotalOrdersCount = Model.TotalOrdersCount;
+    int TotalCompletedOrdersCount = Model.TotalCompletedOrdersCount;
+    int TotalCanceledOrdersCount = Model.TotalCanceledOrdersCount;
+    int ActiveOrdersCount = Model.ActiveOrdersCount;
+    int SetOutOrdersCount = Model.SetOutOrdersCount;
+    var TopSellingCategory = Model.TopSellingCategory;
+    int TopSellingCategoryCount = Model.TopSellingCategoryCount;
+    var TopSellingCategoryList = Model.TopSellingCategoryList;
+    var OrderModel = Model.OrderModel;
+    var Alert = TempData["Alert"];
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-center text-black">Sipariş Yönetimi</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                <a href="/admin/listorders" class="card mb-3 text-white bg-primary text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                    <div class="card-header fw-bold" style="border-radius: 25px">Toplam Sipariş Sayısı</div>
+                    <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                        <h5 class="card-title"><i class="fa-solid fa-cubes-stacked fa-xl me-3"></i></i><span>@TotalOrdersCount Adet</span></h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                <a href="" class="card mb-3 text-white bg-success text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                    <div class="card-header fw-bold" style="border-radius: 25px">Toplam Teslim Edilen Sipariş Sayısı</div>
+                    <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                        <h5 class="card-title"><i class="fa-solid fa-circle-check fa-xl me-3"></i><span>@TotalCompletedOrdersCount Adet</span></h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                <a href="" class="card mb-3 text-white bg-danger text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                    <div class="card-header fw-bold" style="border-radius: 25px">Toplam İptal Edilen Sipariş Sayısı</div>
+                    <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                        <h5 class="card-title"><i class="fa-solid fa-circle-xmark fa-xl me-3"></i><span>@TotalCanceledOrdersCount Adet</span></h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                <a href="" class="card mb-3 text-dark bg-warning text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                    <div class="card-header fw-bold" style="border-radius: 25px">Şuan Hazırlanan Sipariş Sayısı</div>
+                    <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                        <h5 class="card-title"><img src="~/Gifs/chef2.gif" alt="Hazırlanıyor..." class="me-2" style="width: 75px; height: 75px; border-radius: 20px;"><span>@ActiveOrdersCount Adet</span></h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                <a href="" class="card mb-3 text-dark bg-warning text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                    <div class="card-header fw-bold" style="border-radius: 25px">Şuan Dağıtımda Olan Sipariş Sayısı</div>
+                    <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                        <h5 class="card-title"><img src="~/Gifs/order.gif" alt="Hazırlanıyor..." class="me-2" style="width: 75px; height: 75px; border-radius: 20px;"><span>@SetOutOrdersCount Adet</span>
+                        </h5>
+                    </div>
+                </a>
+            </div>
+            @if(TopSellingCategory!=null)
+            {
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #ff6600;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><div>En Çok Satılan Ürün</div><div>@TopSellingCategoryCount<small class="ms-1">Adet</small></div></div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><img src="~/CategoryImages/@TopSellingCategory.ImageUrl" alt="Hazırlanıyor..." class="me-2" style="width: 75px; height: 75px; border-radius: 20px;"><span>@TopSellingCategory.Name</span></h5>
+                        </div>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-d d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #ff6600;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">En Çok Satılan Ürün</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <p class="placeholder-glow">
+                                <span class="placeholder col-12">111111111111111111111</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            }
+            
+        </div>
+        <div class="mt-5">
+            <form asp-controller="admin" asp-action="OrderManager" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" name="orderId" class="form-control border-primary" placeholder="Sipariş numarası giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary py-2 px-3" type="submit" id="button-addon2"><i class="fa-brands fa-searchengin fa-2xl"></i></button>
+                </div>
+            </form>
+        </div>
+        @if(OrderModel!=null)
+        {
+            <div class="row mt-3">
+                <div class="accordion" id="accordionExample_@OrderModel.Id">
+                    <div class="accordion bg-warning" style="border-radius: 20px; border-color: #ff6600; border-style: solid; border-width: 3px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="border-radius: 17px;">
+                            <div class="d-flex">
+                                <h6 class="text-dark fw-bold">Sipariş No : @OrderModel.Id</h6>
+                            </div>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show bg-warning" data-bs-parent="#accordionExample" style="border-bottom-left-radius: 17px; border-bottom-right-radius: 17px;">
+                            <div class="accordion-body">
+                                <div class="row mb-3">
+                                    <div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><h6 class="text-center fw-bold">Kullanıcı Bilgileri</h6></li>
+                                            <li class="list-group-item">Kullanıcı Id : @OrderModel.UserId</li>
+                                            <li class="list-group-item">Kullanıcı Adı : @OrderModel.FullName</li>
+                                            <li class="list-group-item">Kullanıcı Telefon Numarası : @OrderModel.PhoneNumber</li>
+                                            <li class="list-group-item">Kullanıcı Şehir : @OrderModel.CityName</li>
+                                            <li class="list-group-item">Kullanıcı İlçe : @OrderModel.DistrictName</li>
+                                            <li class="list-group-item">Kullanıcı Adres : @OrderModel.Address</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
+                                        <div class="row">
+                                            <div class="col-12 mb-2">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item"><h6 class="text-center fw-bold">Restorant Bilgileri</h6></li>
+                                                    <li class="list-group-item">Restorant Id : @OrderModel.RestaurantId</li>
+                                                    <li class="list-group-item">Restorant Adı : @OrderModel.RestaurantName</li>
+                                                </ul>
+                                            </div>  
+                                            <div class="col-12">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item"><h6 class="text-center fw-bold">Sipariş Bilgileri</h6></li>
+                                                    <li class="list-group-item">Toplam Tutar : @OrderModel.TotalPrice</li>
+                                                    @if(OrderModel.Status==1)
+                                                    {
+                                                        <li class="list-group-item bg-white">Sipariş Durumu : <span>Hazırlanıyor...</span></li>
+                                                    }
+                                                    else if(OrderModel.Status==2)
+                                                    {
+                                                        <li class="list-group-item bg-warning">Sipariş Durumu : <span>Dağıtımda...</span></li>
+                                                        
+                                                    }
+                                                    else if(OrderModel.Status==3)
+                                                    {
+                                                        <li class="list-group-item bg-success text-white">Sipariş Durumu : <span>Teslim Edildi.</span></li>
+                                                        
+                                                    }
+                                                    else if(OrderModel.Status==-1)
+                                                    {
+                                                        <li class="list-group-item bg-danger text-white">Sipariş Durumu : <span>İptal Edildi!</span></li>
+                                                        
+                                                    }
+                                                    <li class="list-group-item">Sipariş Tarihi : @OrderModel.CreatedAt</li>
+                                                    @if(OrderModel.DeliveryDate!=null)
+                                                    {
+                                                        <li class="list-group-item">Teslim Tarihi : @OrderModel.DeliveryDate</li>
+                                                    }
+                                                    
+                                                </ul>
+                                            </div> 
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                @foreach(var orderItem in OrderModel.OrderItemModels)
+                                {
+                                    <div>
+                                        @await Html.PartialAsync("_OrderItemCardSeller",@orderItem)
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                @TempData["Message"]
+            </div>
+        }
+        
+    </div>
+</div>

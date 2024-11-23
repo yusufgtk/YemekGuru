@@ -1,0 +1,196 @@
+@model List<RestaurantModel>
+
+    @{
+        Layout = "_LayoutAdmin";
+        ViewData["Title"] = "Restaurantlar";
+        var Alert = TempData["Alert"];
+    }
+    
+    <div>
+        <div class="container py-5">
+            <div class="mb-5">
+                <h2 class="text-black text-center">Restaurantlar Listesi (Son 30)</h2>
+            </div>
+            <div class="mb-3">
+                <a href="/admin/index" class="text-primary text-decoration-none fw-bold"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+            </div>
+            <div class="mb-5">
+                <form asp-controller="Admin" asp-action="ListRestaurants" method="post">
+                    <div class="input-group mb-3">
+                        <input name="search" type="text" class="form-control" placeholder="Restaurant No veya Restaurant Adını Giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color: #0d6efd; border-style: solid; border-width: 2px;">
+                        <button class="btn btn-outline-primary px-3" type="submit" id="button-addon2" style="border-width: 2px;"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                    </div>
+                </form>
+            </div>
+            @if(TempData["Message"]!=null)
+            {
+                <div class="alert @Alert text-center">
+                    <span>@TempData["Message"]</span>
+                </div>
+            }
+    
+            @if(Model.Count()<=0)
+            {
+                <div class="alert alert-warning text-center">
+                    <span>Satıcı başvurusu bulunmamaktadır!</span>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <table class="table table-primary shadow-lg text-black" style=" border-radius: 10px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 150px;">Restaurant No</th>
+                                <th scope="col" style="width: 200px;">Resim</th>
+                                <th scope="col">Restaurant Adı</th>
+                                <th scope="col">Şehir</th>
+                                <th scope="col">İlçe</th>
+                                <th scope="col" style="width: 50px;">Durum</th>
+                                <th scope="col" style="width: 190px;">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr class="fw-bold">
+                                    <th scope="row" class="@(item.IsApproved==false?"bg-danger":"")">@item.Id</th>
+                                    <td>
+                                        @if(item.ImageUrl!=null)
+                                        {
+                                            <img src="~/RestaurantImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/RestaurantImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                        }
+                                    </td>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        @foreach(var city in ViewBag.Cities)
+                                        {
+                                            @if(item.CityId==city.Id)
+                                                @city.Name
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach(var district in ViewBag.Districts)
+                                        {
+                                            @if(item.DistrictId==district.Id)
+                                                @district.Name
+                                        }
+                                    </td>
+                                    <td>
+                                        @if(item.IsActive==true)
+                                        {
+                                            <div class="text-success">
+                                                <i class="fa-solid fa-lock-open fa-lg"></i>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-danger">
+                                                <i class="fa-solid fa-lock fa-lg"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            @if(item.IsApproved==true)
+                                            {
+                                                <div>
+                                                    <form asp-controller="Admin" asp-action="BanRestaurant" method="post">
+                                                        <input type="hidden" name="restaurantId" value="@item.Id">
+                                                        <button type="submit" class="btn btn-danger">Banla</button>
+                                                    </form>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="me-2">
+                                                    <form asp-controller="Admin" asp-action="NotBanRestaurant" method="post">
+                                                        <input type="hidden" name="restaurantId" value="@item.Id">
+                                                        <button type="submit" class="btn btn-success">Banı kaldır</button>
+                                                    </form>
+                                                </div>
+                                            }
+                                            
+                                            
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                                Detaylı incele
+                                            </button>
+    
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">@item.Name</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div>
+                                                            @if(item.ImageUrl!=null)
+                                                            {
+                                                                <img src="~/RestaurantImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="~/RestaurantImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                                            }
+                                                        </div>
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item">Restaurantın Açıklaması : @item.Description</li>
+                                                            <li class="list-group-item">Açılış Saati : @item.OpeningTime</li>
+                                                            <li class="list-group-item">Kapanış Saati : @item.ClosingTime</li>
+                                                            <li class="list-group-item">Restaurantın Telefon Numarası : @item.PhoneNumber</li>
+                                                            <li class="list-group-item">Email Adresi : @item.EmailAdress</li>
+                                                            <li class="list-group-item"></li>
+                                                            <li class="list-group-item">Restaurantın Bulunduğu Şehir : 
+                                                                @foreach(var city in ViewBag.Cities)
+                                                                {
+                                                                    @if(item.CityId==city.Id)
+                                                                        @city.Name
+                                                                }
+                                                            </li>
+                                                            <li class="list-group-item">Restaurantın Bulunduğu İlçe : 
+                                                                @foreach(var district in ViewBag.Districts)
+                                                                {
+                                                                    @if(item.DistrictId==district.Id)
+                                                                        @district.Name
+                                                                }
+                                                            </li>
+                                                            <li class="list-group-item">Restaurantın Bulunduğu Tam Adresi : @item.Address</li>
+                                                            <li class="list-group-item">Şuanki durum : 
+                                                                @if(item.IsActive==true)
+                                                                {
+                                                                    <i class="fa-solid fa-lock-open fa-lg text-success"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa-solid fa-lock fa-lg text-danger"></i>
+                                                                }
+                                                            </li>
+                                                            <li class="list-group-item">Restaurantın Onaylanma Tarihi : @item.CreatedAt</li>
+                                                        </ul>
+                                                    </div>
+                                                        <div class="modal-footer d-flex justify-content-between">
+                                                            <a asp-controller="Admin" asp-action="UserDetail" asp-route-userId="@item.UserId" type="button" class="btn btn-primary"><span>Restaurant Sahibine Git</span></a>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>

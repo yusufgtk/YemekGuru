@@ -1,0 +1,625 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\YemekGuru.webapp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\YemekGuru.webapp.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ApplySellerImages\\yemekguru.jpg",
+      "PackagePath": "staticwebassets\\ApplySellerImages\\yemekguru.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\062fbcbb-b725-4fc9-ba67-a493aa6fafa4.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\062fbcbb-b725-4fc9-ba67-a493aa6fafa4.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\1.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\10.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\10.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\2.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\3.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\4.Jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\4.Jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\5.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\6.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\6.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\6668d917-2ad8-47ae-a4af-d2624b6e9eb8.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\6668d917-2ad8-47ae-a4af-d2624b6e9eb8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\6b4a2136-abd7-4431-872c-3beb006163bc.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\6b4a2136-abd7-4431-872c-3beb006163bc.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\7.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\7.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\8.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\9.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\9.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\a9aded93-735b-4582-92b6-04215fa85a3f.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\a9aded93-735b-4582-92b6-04215fa85a3f.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\CategoryImages\\fa020082-6d07-45c3-8401-1cceb064d9d5.jpeg",
+      "PackagePath": "staticwebassets\\CategoryImages\\fa020082-6d07-45c3-8401-1cceb064d9d5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\chef.gif",
+      "PackagePath": "staticwebassets\\Gifs\\chef.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\chef2.gif",
+      "PackagePath": "staticwebassets\\Gifs\\chef2.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\food2.gif",
+      "PackagePath": "staticwebassets\\Gifs\\food2.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\foodLoading.gif",
+      "PackagePath": "staticwebassets\\Gifs\\foodLoading.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\foods.gif",
+      "PackagePath": "staticwebassets\\Gifs\\foods.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\guru-chef.gif",
+      "PackagePath": "staticwebassets\\Gifs\\guru-chef.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\header.gif",
+      "PackagePath": "staticwebassets\\Gifs\\header.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\loading1.gif",
+      "PackagePath": "staticwebassets\\Gifs\\loading1.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\lock.gif",
+      "PackagePath": "staticwebassets\\Gifs\\lock.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\order.gif",
+      "PackagePath": "staticwebassets\\Gifs\\order.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Gifs\\pizza.gif",
+      "PackagePath": "staticwebassets\\Gifs\\pizza.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Icons\\guru-chef.jpeg",
+      "PackagePath": "staticwebassets\\Icons\\guru-chef.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Icons\\money.png",
+      "PackagePath": "staticwebassets\\Icons\\money.png"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Icons\\performans.png",
+      "PackagePath": "staticwebassets\\Icons\\performans.png"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\Icons\\yemekguru.jpg",
+      "PackagePath": "staticwebassets\\Icons\\yemekguru.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\00cdb774-a981-4809-8969-22ea98931dde.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\00cdb774-a981-4809-8969-22ea98931dde.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\09979385-f850-4d97-a4c6-66c4dbe67bb8.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\09979385-f850-4d97-a4c6-66c4dbe67bb8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\1.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\18ec5afa-85a6-43ea-b9b6-90f3ea238543.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\18ec5afa-85a6-43ea-b9b6-90f3ea238543.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\2.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\3.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\320f472a-4a35-4037-9f3b-5b2aead33c9a.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\320f472a-4a35-4037-9f3b-5b2aead33c9a.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\354e779a-1ff5-4406-bd55-30eea15180ee.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\354e779a-1ff5-4406-bd55-30eea15180ee.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\3620682c-2451-46aa-9a4c-14be74c05a22.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\3620682c-2451-46aa-9a4c-14be74c05a22.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\4.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\4.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\5.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\5535ac08-bbfd-4f68-bbd3-fc9c47a2c35c.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\5535ac08-bbfd-4f68-bbd3-fc9c47a2c35c.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\5b597174-8241-4b76-8c5c-a96f8371d2da.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\5b597174-8241-4b76-8c5c-a96f8371d2da.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\5b7feb9b-9123-47f7-a5a6-b5af4320ec6a.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\5b7feb9b-9123-47f7-a5a6-b5af4320ec6a.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\6.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\6.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\7.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\7.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\8ce01be5-d2bb-4a4e-a0ef-09e3cea63304.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\8ce01be5-d2bb-4a4e-a0ef-09e3cea63304.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\94604408-7222-4696-9ffd-f63f0475e300.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\94604408-7222-4696-9ffd-f63f0475e300.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\a2ef536f-2d37-4ec5-a70d-281ecf0f24f8.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\a2ef536f-2d37-4ec5-a70d-281ecf0f24f8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\a9cd989e-5d8c-47bd-94ed-3187a5e42814.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\a9cd989e-5d8c-47bd-94ed-3187a5e42814.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\aad6e243-5bba-4f2e-9ee0-b456ac4f3542.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\aad6e243-5bba-4f2e-9ee0-b456ac4f3542.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\abb03f41-9039-4c61-bf9b-82c945060f56.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\abb03f41-9039-4c61-bf9b-82c945060f56.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\b0e57be9-373b-4224-809c-4e585d31da0e.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\b0e57be9-373b-4224-809c-4e585d31da0e.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\be79b707-5a81-45a0-9b0c-4ca0cd5400f9.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\be79b707-5a81-45a0-9b0c-4ca0cd5400f9.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\c1a7a27f-1be4-4cb9-96ff-fde14630fe21.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\c1a7a27f-1be4-4cb9-96ff-fde14630fe21.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\c3ee4fc5-47ff-4cfd-bca2-d3b5000bc1a9.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\c3ee4fc5-47ff-4cfd-bca2-d3b5000bc1a9.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\e39e6cf5-dea3-47e8-adf0-99626f12c5bb.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\e39e6cf5-dea3-47e8-adf0-99626f12c5bb.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\e5cab2a3-0e81-4815-acb0-c3dd30ccae78.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\e5cab2a3-0e81-4815-acb0-c3dd30ccae78.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\e8b34324-f323-4020-8cc2-c73b9017fab3.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\e8b34324-f323-4020-8cc2-c73b9017fab3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\f2097a90-555c-40b4-86b8-49b14085290b.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\f2097a90-555c-40b4-86b8-49b14085290b.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\f38fe8de-e0e7-4626-99a6-b9508441213b.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\f38fe8de-e0e7-4626-99a6-b9508441213b.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\f4ae233e-2ccf-4ee6-bf95-011ed9de0ce9.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\f4ae233e-2ccf-4ee6-bf95-011ed9de0ce9.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\fe419b3a-44ee-446e-a870-c0ade97affda.jpeg",
+      "PackagePath": "staticwebassets\\ProductImages\\fe419b3a-44ee-446e-a870-c0ade97affda.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\foodicon.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\foodicon.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\ProductImages\\yemekguru.jpg",
+      "PackagePath": "staticwebassets\\ProductImages\\yemekguru.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\1.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\11bb3045-78a3-4a5d-99b0-4a2d03c9c29a.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\11bb3045-78a3-4a5d-99b0-4a2d03c9c29a.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\197ea639-a9b3-4657-ae32-cac9d1e7d670.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\197ea639-a9b3-4657-ae32-cac9d1e7d670.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\2.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\3.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\3.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\30081cf3-2fa5-498f-ae40-c9f922616d40.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\30081cf3-2fa5-498f-ae40-c9f922616d40.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\3112506c-8215-455b-acd2-e88643ea5621.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\3112506c-8215-455b-acd2-e88643ea5621.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\7c8d1045-e360-4752-99b7-e4e3de21fe6d.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\7c8d1045-e360-4752-99b7-e4e3de21fe6d.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\ccc07d87-2523-45ef-8f9b-245f50bbddae.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\ccc07d87-2523-45ef-8f9b-245f50bbddae.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\d8355843-75d2-4f74-bb2c-a20a6c63bd2d.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\d8355843-75d2-4f74-bb2c-a20a6c63bd2d.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\e6d3a5ea-bff0-43eb-9040-9de366cc726c.jpeg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\e6d3a5ea-bff0-43eb-9040-9de366cc726c.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\RestaurantImages\\yemekguru.jpg",
+      "PackagePath": "staticwebassets\\RestaurantImages\\yemekguru.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\31de5375-f6b4-4f84-941f-c3783689efc8.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\31de5375-f6b4-4f84-941f-c3783689efc8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\5e4e5748-594b-472e-bab0-145c5b85dc6a.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\5e4e5748-594b-472e-bab0-145c5b85dc6a.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\857b719e-c4bd-4d06-9a4e-30ccc0821830.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\857b719e-c4bd-4d06-9a4e-30ccc0821830.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\906e8dc3-f1c8-4102-a264-39c4ef6f62f6.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\906e8dc3-f1c8-4102-a264-39c4ef6f62f6.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\92e452f5-4fe8-4f28-a668-a1739c7284e8.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\92e452f5-4fe8-4f28-a668-a1739c7284e8.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\b78a1410-f3cf-438f-8cbf-24a4c28c91af.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\b78a1410-f3cf-438f-8cbf-24a4c28c91af.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\c991c7eb-ddb0-4dee-a397-35a739d9724e.jpeg",
+      "PackagePath": "staticwebassets\\UserImages\\c991c7eb-ddb0-4dee-a397-35a739d9724e.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\user.gif",
+      "PackagePath": "staticwebassets\\UserImages\\user.gif"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\UserImages\\user.png",
+      "PackagePath": "staticwebassets\\UserImages\\user.png"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\css\\seller.css",
+      "PackagePath": "staticwebassets\\css\\seller.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\js\\signalr-client.js",
+      "PackagePath": "staticwebassets\\js\\signalr-client.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\Desktop\\YemekGuru\\YemekGuru.webapp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.YemekGuru.webapp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.YemekGuru.webapp.props",
+      "PackagePath": "build\\YemekGuru.webapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.YemekGuru.webapp.props",
+      "PackagePath": "buildMultiTargeting\\YemekGuru.webapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.YemekGuru.webapp.props",
+      "PackagePath": "buildTransitive\\YemekGuru.webapp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

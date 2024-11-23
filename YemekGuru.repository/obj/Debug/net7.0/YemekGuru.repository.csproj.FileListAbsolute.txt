@@ -1,0 +1,17 @@
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.repository.deps.json
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.repository.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.repository.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.entity.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.entity.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.csproj.AssemblyReference.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.AssemblyInfoInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.AssemblyInfo.cs
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\refint\YemekGuru.repository.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\ref\YemekGuru.repository.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\bin\Debug\net7.0\YemekGuru.repository.runtimeconfig.json
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGuru.repository.genruntimeconfig.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.repository\obj\Debug\net7.0\YemekGur.0C87AA76.Up2Date

@@ -1,0 +1,185 @@
+@model List<UserModel>
+
+@{
+    
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Kullanıcılar";
+    var Alert = TempData["Alert"];
+    var ReturnUrl="/admin/listUsers";
+}
+
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Kullanıcılar Listesi (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="fw-bold text-decoration-none" style="color: #3C2317;"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        <div class="mb-5">
+            <form asp-controller="Admin" asp-action="ListUsers" method="post">
+                <div class="input-group mb-3">
+                    <input name="search" type="text" class="form-control" placeholder="Kullanıcı No veya Kullanıcı kdını giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color: #3C2317; border-style: solid; border-width: 2px;">
+                    <button class="btn px-3" type="submit" id="button-addon2" style="border-width: 2px; border-color: #3C2317; color: #3C2317;"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                </div>
+            </form>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Satıcı başvurusu bulunmamaktadır!</span>
+            </div>
+        }
+        else
+        {
+            <div>
+                <table class="table shadow-lg text-white" style=" border-radius: 10px; background-color: #3C2317;">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 150px;">Kullanıcı Id</th>
+                            <th scope="col" style="width: 200px;">Resim</th>
+                            <th scope="col">Kullanıcı Adı</th>
+                            <th scope="col">Ad</th>
+                            <th scope="col">Soyad</th>
+                            <th scope="col">Satıcı mı?</th>
+                            <th scope="col" style="width: 50px;">Durum</th>
+                            <th scope="col" style="width: 190px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row" class="@(item.IsActive==false?"bg-danger":"")">@item.Id</th>
+                                <td>
+                                    @if(item.ImageUrl!=null)
+                                    {
+                                        <img src="~/UserImages/@item.ImageUrl" alt="@item.UserName" width="100%" height="200px" style="border-style: solid; border-color: #ff6600; border-radius: 20px; border-width: 2px;">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/UserImages/user.png" alt="@item.UserName" width="100%" height="200px" style="border-style: solid; border-color: #ff6600; border-radius: 20px; border-width: 2px;">
+                                    }
+                                </td>
+                                <td>@item.UserName</td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>
+                                    @if(item.RestaurantId!=null)
+                                    {
+                                        <span class="fw-bold fs-5 fa-fade" style="color: #74E291;">Satıcı</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if(item.IsActive==true)
+                                    {
+                                        <div class="text-success">
+                                            <i class="fa-solid fa-user-check fa-xl"></i>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="text-danger">
+                                            <i class="fa-solid fa-user-large-slash fa-fade fa-xl"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        @if(item.IsActive==true)
+                                        {
+                                            <div>
+                                                <form asp-controller="Admin" asp-action="BanUser" method="post">
+                                                    <input type="hidden" name="userId" value="@item.Id">
+                                                    <input type="hidden" name="returnUrl" value="@ReturnUrl">
+                                                    <button type="submit" class="btn btn-danger">Banla</button>
+                                                </form>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="me-2">
+                                                <form asp-controller="Admin" asp-action="NotBanUser" method="post">
+                                                    <input type="hidden" name="userId" value="@item.Id">
+                                                    <input type="hidden" name="returnUrl" value="@ReturnUrl">
+                                                    <button type="submit" class="btn btn-success">Banı kaldır</button>
+                                                </form>
+                                            </div>
+                                        }
+                                        
+                                        
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">@item.UserName</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/UserImages/@item.ImageUrl" alt="@item.UserName" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/UserImages/user.png" alt="@item.UserName" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">Ad : @item.FirstName</li>
+                                                        <li class="list-group-item">Soyad : @item.LastName</li>
+                                                        <li class="list-group-item">TCKN : @item.TCKN</li>
+                                                        <li class="list-group-item">Telefon Numarası : @item.PhoneNumber</li>
+                                                        <li class="list-group-item">Email Adresi : @item.EmailAddress</li>
+                                                        <li class="list-group-item">GuruPuan : @item.GuruPuan</li>
+                                                        <li class="list-group-item">Şuanki durum : 
+                                                            @if(item.IsActive==true)
+                                                            {
+                                                                <span class="me-3">Aktif Kullanıcı</span><i class="fa-solid fa-user-check fa-lg text-success"></i>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="me-3">Banlandı!</span><i class="fa-solid fa-user-large-slash fa-fade fa-lg text-danger"></i>
+                                                            }
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer d-flex justify-content-between">
+                                                        @if(item.RestaurantId!=null)
+                                                        {
+                                                            <a asp-controller="Admin" asp-action="RestaurantDetail" asp-route-restaurantId="@item.RestaurantId" type="button" class="btn btn-primary"><span>Restoranta Git</span></a>
+                                                        }
+                                                        
+                                                        <button type="button" class="btn btn-danger ms-auto" data-bs-dismiss="modal">Kapat</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

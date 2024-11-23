@@ -1,0 +1,74 @@
+
+<nav id="costumer-nav" class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: --bg-color-main;">
+    <div class="container">
+        <a class="navbar-brand text-white fs-4 me-5" href="/">
+            <img src="~/Icons/yemekguru.jpg" alt="" style="min-width: 70px; max-width: 80px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fa-solid fa-bars fa-lg"></i></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup"> 
+            <div class="navbar-nav">
+                <a class="nav-link text-white fs-5" aria-current="page" href="/">Ana Sayfa</a>
+                <a class="nav-link text-white fs-5" aria-current="page" href="/home/listproducts">Yemekler</a>
+            </div>
+            @if(ViewBag.AddressTitle!=null)
+            {
+                <div class="navbar-nav">
+                    <div>
+                        <a href="/user/profile">
+                            <span class="bg-primary text-white p-2" style="border-radius: 20px; border-color: #fff; border-style: solid; border-width: 1pxc;">@ViewBag.AddressTitle</span>
+                        </a>
+                        <!-- <div>
+                            <span>@ViewBag.City</span> /
+                            <span>@ViewBag.District</span>
+                        </div> -->
+                        <!-- <div class="p-1">
+                            <div class="text-truncate">@ViewBag.FullAddress</div>
+                        </div> -->
+                    </div>
+                </div>
+            }
+            <div class="navbar-nav">
+                @if(User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item me-5 my-auto">
+                        <a asp-controller="Cart" asp-action="Detail" class="text-white position-relative">
+                            <i class="fa-solid fa-basket-shopping fa-2xl"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                Sepet
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-bolder fs-5" style="border-color: #fff; border-style: solid; border-width: 3px; border-radius: 8px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @(User.Identity.Name)
+                        </a>
+                        <ul class="dropdown-menu" style="border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 8px;">
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="ListOrders"><span class="me-3">Siparişlerim</span><i class="fa-solid fa-cube"></i></a></li>
+                            <!-- <li><a class="dropdown-item" href="#"><span class="me-3">Kuponlarım</span><i class="fa-solid fa-ticket"></i></a></li> -->
+                            <li><a class="dropdown-item text-success fw-bolder" asp-controller="User" asp-action="ListFeedbacks"><span class="me-3">Geri Bildirimler</span><i class="fa-solid fa-comment-medical"></i></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <!-- <li><a class="dropdown-item" href="#"><span class="me-3">Cüzdan</span><i class="fa-solid fa-wallet"></i></a></li> -->
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="Profile"><spanc class="me-3">Profil</spanc><i class="fa-solid fa-user"></i></a></li>
+                            @if(User.IsInRole("Seller"))
+                            {
+                                
+                                <li class="bg-black"><a class="dropdown-item fw-bold" asp-controller="Seller" asp-action="Index" style="background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+                                    -webkit-background-clip: text; /* Webkit (Chrome, Safari) tarayıcıları için */
+                                    color: transparent; /* Metin rengini saydam hale getiriyoruz */
+                                    display: inline-block; /* Inline elementi block'a çeviriyoruz */"><spanc class="me-3">Restaurant Paneli</spanc><i class="fa-solid fa-hotel fa-lg"></i></a></li>
+                            }
+                            <li><a class="dropdown-item text-danger fw-bolder" asp-controller="Account" asp-action="Logout"><span class="me-3">Çıkış</span><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        </ul>
+                    </li>
+                }else{
+                    <a class="nav-link text-white fs-5 me-3" aria-current="page" asp-controller="Account" asp-action="Login"><i class="fa-solid fa-user fa-lg"></i></a>
+                    <a class="nav-link text-white fs-5" asp-controller="Account" asp-action="Register"><i class="fa-solid fa-user-plus fa-lg"></i></a>
+                }
+                
+            </div>
+        </div>
+    </div>
+</nav>

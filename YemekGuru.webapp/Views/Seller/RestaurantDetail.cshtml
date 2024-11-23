@@ -1,0 +1,51 @@
+@model RestaurantModel
+@{
+    Layout="_LayoutSeller";
+    ViewData["Title"] = "Restaurant";
+    var Alert = TempData["Alert"];
+}
+
+<div class="bg-dark">
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-center text-white">Restaurant Bilgileriniz</h2>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-success">
+                @TempData["Message"]
+            </div>
+        }
+        <div>
+            <div class="d-flex justify-content-center">
+                @if(Model.ImageUrl!=null)
+                {
+                    <img src="~/RestaurantImages/@Model.ImageUrl" alt="" style="width: 250px; height: 200px; border-radius: 20px;">
+                }
+                else
+                {
+                    <img src="~/ProductImages/yemekguru.jpg" alt="" style="width: 250px; height: 200px; border-radius: 20px;">
+                }
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="/seller/editrestaurant" class="btn btn-primary" style="border-radius: 20px;"><span class="me-2">Düzenle</span><i class="fa-regular fa-pen-to-square fa-lg"></i></a>
+            </div>
+            <div class="mb-5 mt-2 bg-white" style="border-color: #ff6600; border-width: 5px; border-style: solid; border-radius: 20px;">
+                <ul class="list-group" style="border-radius: 20px;">
+                    <li class="list-group-item fw-bold @(Model.Name!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.Name) : @Model.Name</li>
+                    <li class="list-group-item fw-bold @(Model.Description!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.Description) : @Model.Description</li>
+                    <li class="list-group-item fw-bold @(Model.PhoneNumber!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.PhoneNumber) : @Model.PhoneNumber</li>
+                    <li class="list-group-item fw-bold @(Model.EmailAdress!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.EmailAdress) : @Model.EmailAdress</li>
+                    <li class="list-group-item fw-bold @(Model.CityId!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.CityId) : @ViewBag.City.Name</li>
+                    <li class="list-group-item fw-bold @(Model.CityId!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.DistrictId) : @ViewBag.District.Name</li>
+                    <li class="list-group-item fw-bold @(Model.OpeningTime!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.OpeningTime) : @Model.OpeningTime</li>
+                    <li class="list-group-item fw-bold @(Model.ClosingTime!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.ClosingTime) : @Model.ClosingTime</li>
+                    <li class="list-group-item fw-bold @(Model.DeliveryTime!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.DeliveryTime) : @Model.DeliveryTime dk</li>
+                    <li class="list-group-item fw-bold @(Model.MinimumOrderPrice!=null?"bg-light":"bg-danger")">@Html.DisplayNameFor(i=>Model.MinimumOrderPrice) : @Model.MinimumOrderPrice TL</li>
+                    <li class="list-group-item fw-bold @(Model.Rating!=null?"bg-light":"bg-warning")">@Html.DisplayNameFor(i=>Model.Rating) : @Model.Rating</li>
+                    <li class="list-group-item fw-bold @(Model.CreatedAt!=null?"bg-light":"bg-danger")">Satıcı Olduğun Tarih : @Model.CreatedAt</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

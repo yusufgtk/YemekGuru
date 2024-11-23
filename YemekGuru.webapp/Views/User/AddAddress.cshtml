@@ -1,0 +1,59 @@
+@model AddressModel
+@{
+    ViewData["Title"] = "Adres Ekle";
+}
+
+<div class="container my-5">
+    <div>
+        <h2 class="text-center">Adres Ekleme Formu</h2>
+    </div>
+    <div>
+        <form asp-controller="User" asp-action="AddAddress" method="post">
+            <div asp-validation-summary="All"></div>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control">
+                <span asp-validation-for="Title" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="City" class="form-label"></label>
+                <select asp-for="City" class="form-select" aria-label="Default select example">
+                    <option selected>Seçiniz...</option>
+                    @if(ViewBag.Cities != null)
+                    {
+                        @foreach(var city in ViewBag.Cities)
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="City" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="District" class="form-label"></label>
+                <select asp-for="District" class="form-select" aria-label="Default select example">
+                    <option selected>Seçiniz...</option>
+                    @if(ViewBag.Districts != null)
+                    {
+                        @foreach(var district in ViewBag.Districts)
+                        {
+                            <option value="@district.Id">@district.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="District" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="FullAddress" class="form-label"></label>
+                <textarea asp-for="FullAddress" class="form-control" style="height: 100px;"></textarea>
+                <span asp-validation-for="FullAddress" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" placeholder="Örnek: ABC fırının yanı">
+                <span asp-validation-for="Description" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Ekle</button>
+        </form>
+    </div>
+</div>

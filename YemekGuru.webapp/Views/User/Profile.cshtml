@@ -1,0 +1,120 @@
+@model ProfilePageViewModel
+@{
+    var User = Model.UserModel;
+    var Addresses = Model.AddressModels;
+    ViewData["Title"] = User.UserName;
+    var Alert = TempData["Alert"];
+
+}
+
+<div class="container">
+    @if(TempData["Message"]!=null)
+    {
+        <div class="alert @Alert text-center my-3" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+    <div class="row g-0 mt-5" style="border-color: #ff6600; border-style: solid; border-width: 5px; border-radius: 15px;">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 d-flex justify-content-center align-items-center">
+            <div class="w-100 d-flex justify-content-center py-3">
+                @if(User.ImageUrl!=null)
+                {
+                    <img src="~/UserImages/@User.ImageUrl" alt="" style="width: 200px; height: 200px;  border-radius: 20px;">
+                }
+                else
+                {
+                    <img src="~/UserImages/user.png" alt="" style="width: 200px; border-radius: 15px;">
+                }
+                
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
+            <ul class="list-group fw-bolder" style="border-radius: 15px;">
+                <li class="list-group-item">@Html.DisplayNameFor(model=>User.UserName) : @User.UserName</li>
+
+                @if(User.FirstName!=null)
+                {
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.FirstName) : @User.FirstName</li>
+                }
+                else{
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.FirstName) : <span class="bg-danger px-1" style="border-radius: 10px;">Girilmedi</span></li>
+                }
+
+                @if(User.LastName!=null)
+                {
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.LastName) : @User.LastName</li>
+                }
+                else{
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.LastName) : <span class="bg-danger px-1" style="border-radius: 10px;">Girilmedi</span></li>
+                }
+
+                <li class="list-group-item">@Html.DisplayNameFor(model=>User.EmailAddress) : @User.EmailAddress</li>
+
+                @if(User.PhoneNumber!=null)
+                {
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.PhoneNumber) : @User.PhoneNumber</li>
+                }
+                else{
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.PhoneNumber) : <span class="bg-danger px-1" style="border-radius: 10px;">Girilmedi</span></li>
+                }
+
+                <!-- @if(User.BirthDay!=null)
+                {
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.BirthDay) : @User.BirthDay</li>
+                }
+                else{
+                    <li class="list-group-item">@Html.DisplayNameFor(model=>User.BirthDay) : <span class="bg-danger px-1" style="border-radius: 10px;">Girilmedi</span></li>
+                } -->
+                <li class="list-group-item">@Html.DisplayNameFor(model=>User.GuruPuan) : <span class="p-1 bg-warning" style="border-radius: 10px;">@User.GuruPuan</span></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end my-3">
+        <a asp-controller="User" asp-action="ApplySeller" asp-route-userId="@User.Id" class="btn bg-black text-white me-2" style="border-radius: 7px;"><span class="me-2">Satıcı Ol</span><i class="fa-solid fa-hotel fa-lg"></i></a>
+        <a asp-controller="User" asp-action="UpdatePassword" asp-route-userId="@User.Id" class="btn btn-primary me-2" style="border-radius: 7px;"><span class="me-2">Şifre Güncelle</span><i class="fa-regular fa-pen-to-square fa-lg"></i></a>
+        <a asp-controller="User" asp-action="EditUser" asp-route-userId="@User.Id" class="btn btn-success" style="border-radius: 7px;"><span class="me-2">Düzenle</span><i class="fa-regular fa-pen-to-square fa-lg"></i></a>
+    </div>
+    <div class="my-5">
+        <div class="mb-lg-3">
+            <h3 class="text-center text-black"><span class="me-3">Adreslerim</span><i class="fa-solid fa-location-dot fa-bounce fa-lg"></i></h3>
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+            <a asp-controller="User" asp-action="AddAddress" asp-route-userId="@User.Id" class="btn btn-success" style="border-radius: 7px;"><span class="me-2">Adres Ekle</span><i class="fa-regular fa-plus fa-lg"></i></a>
+        </div>
+        @if(Addresses.Count()>0)
+        {
+            <div class="row">
+                @foreach(var address in Addresses)
+                {
+                    <div class="col-12">
+                        @if(address.Id==User.AddressId)
+                        {
+                            <div class="mb-3" style="border-color: #ff6600; border-style: solid; border-width: 5px; border-radius: 20px;">
+                                @await Html.PartialAsync("_AddressCard",@address)
+                            </div>
+                                
+                        }
+                        else
+                        {
+                            <div class="mb-3">
+                                @await Html.PartialAsync("_AddressCard",@address)
+                            </div>
+                        }
+                    </div>
+                    
+                }
+            </div>
+        }
+        else{
+            <div class="alert alert-danger text-center" role="alert">
+                <i class="fa-solid fa-triangle-exclamation fa-lg me-2"></i>
+                <span>Şuan adresiniz yok lütfen adres ekleyin!</span>
+            </div>
+        }
+        <div class="alert alert-warning text-center" role="alert">
+            <i class="fa-solid fa-circle-exclamation fa-lg me-2"></i>
+            <span>En fazla 5 adet adres ekleyebilirsin.</span>
+        </div>
+    </div>
+</div>

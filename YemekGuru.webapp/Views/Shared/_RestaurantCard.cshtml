@@ -1,0 +1,71 @@
+@model RestaurantModel
+
+<a id="restaurant-card" asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@Model.Id" class="card text-decoration-none" style="width: 25rem; height: 18rem; border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 25px; background-color: #ff6600;" >
+    <div style="border-top-left-radius: 24px; border-top-right-radius: 24px;">
+        @if(Model.ImageUrl!=null)
+        {
+            @if(Model.IsActive==true)
+            {
+                <img src="~/RestaurantImages/@Model.ImageUrl" class="card-img-top" alt="..." style="max-width: 25rem; max-height: 12rem; ">
+            }
+            else
+            {
+                <img src="~/RestaurantImages/@Model.ImageUrl" class="card-img-top" alt="..." style="max-width: 25rem; max-height: 12rem; filter: grayscale(100%); ">
+            }
+            
+        }
+        else
+        {
+            @if(Model.IsActive==true)
+            {
+                <img src="~/RestaurantImages/yemekguru.jpg" class="card-img-top" alt="..." style="max-width: 25rem; max-height: 12rem; ">
+            }
+            else
+            {
+                <img src="~/RestaurantImages/yemekguru.jpg" class="card-img-top" alt="..." style="max-width: 25rem; max-height: 12rem; filter: grayscale(100%); ">
+            }
+            
+        }
+        
+    </div>
+
+    <div class="card-body" style="background-color: #F7EFE5; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px;">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title text-dark">@Model.Name</h5>
+            @if(Model.IsActive==true)
+            {
+                <i class="fa-solid fa-lock-open text-success"></i>
+            }else{
+                <i class="fa-solid fa-lock text-danger"></i>
+            }
+        </div>
+        <div class="row">
+            <div class="col-4">
+                @if(Model.Rating>=4.0)
+                {
+                    <span class="fw-bolder text-dark me-2">Puan : @Model.Rating</span><i class="fa-solid fa-star" style="color: #ff6600;"></i>
+                }
+                else if(Model.Rating>=2.5)
+                {
+                    <span class="fw-bolder text-dark me-2">Puan : @Model.Rating</span><i class="fa-regular fa-star-half-stroke" style="color: #ff6600;"></i>
+                }
+                else if(Model.Rating<2.5)
+                {
+                    <span class="fw-bolder text-dark me-2">Puan : @Model.Rating</span><i class="fa-regular fa-star" style="color: #ff6600;"></i>
+                }
+                else{ 
+                    <small class="text-dark fw-bold" style="font-size: 10px;">Değerlendirme yok!</small>
+                }
+                
+            </div>
+            <div class="col-8">
+                <div class="text-end">
+                    <span class="fw-bolder text-dark">Min. Sipariş : @Model.MinimumOrderPrice TL</span>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</a>
+

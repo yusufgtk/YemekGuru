@@ -1,0 +1,157 @@
+@model List<ApplySellerModel>
+
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Satıcı Başvuruları";
+    var Alert = TempData["Alert"];
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Satıcı Başvuruları Listesi (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="text-black text-decoration-none fw-bold"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Satıcı başvurusu bulunmamaktadır!</span>
+            </div>
+        }
+        else
+        {
+            <div>
+                <table class="table shadow-lg" style="background-color: #E7B10A; border-radius: 10px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Başvuru No</th>
+                            <th scope="col" style="width: 200px;">Resim</th>
+                            <th scope="col">Restaurant Adı</th>
+                            <th scope="col">Ad / Soyad</th>
+                            <th scope="col">TCKN</th>
+                            <th scope="col">Şehir</th>
+                            <th scope="col">İlçe</th>
+                            <th scope="col" style="width: 175px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row">@item.Id</th>
+                                <td>
+                                    @if(item.ImageUrl!=null)
+                                    {
+                                        <img src="~/ApplySellerImages/@item.ImageUrl" alt="@item.RestaurantName" width="100%">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/ApplySellerImages/yemekguru.jpg" alt="@item.RestaurantName" width="100%">
+                                    }
+                                </td>
+                                <td>@item.RestaurantName</td>
+                                <td>@item.FirstName / @item.LastName</td>
+                                <td>@item.TCKN</td>
+                                <td>
+                                    @foreach(var city in ViewBag.Cities)
+                                    {
+                                        @if(item.CityId==city.Id)
+                                            @city.Name
+                                    }
+                                </td>
+                                <td>
+                                    @foreach(var district in ViewBag.Districts)
+                                    {
+                                        @if(item.DistrictId==district.Id)
+                                            @district.Name
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="me-2">
+                                            <form asp-controller="Admin" asp-action="ConfirmApplySeller" method="post">
+                                                <input type="hidden" name="applySellerId" value="@item.Id">
+                                                <button type="submit" class="btn btn-success">Onayla</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <form asp-controller="Admin" asp-action="RejectApplySeller" method="post">
+                                                <input type="hidden" name="applySellerId" value="@item.Id">
+                                                <button type="submit" class="btn btn-danger">Reddet</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@item.RestaurantName</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/ApplySellerImages/@item.ImageUrl" alt="@item.RestaurantName" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/ApplySellerImages/yemekguru.jpg" alt="@item.RestaurantName" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">TCKN : @item.TCKN</li>
+                                                        <li class="list-group-item">Ad/Soyad : @item.FirstName / @item.LastName</li>
+                                                        <li class="list-group-item">Kişinin Cep Telefon Numarası : @item.PhoneNumber</li>
+                                                        <li class="list-group-item">Restaurantın Telefon Numarası : @item.RestaurantPhoneNumber</li>
+                                                        <li class="list-group-item">Email Adresi : @item.EmailAddress</li>
+                                                        <li class="list-group-item">Doğum Tarihi : @item.BirthDay</li>
+                                                        <li class="list-group-item">Restaurantın Bulunduğu Şehir : 
+                                                            @foreach(var city in ViewBag.Cities)
+                                                            {
+                                                                @if(item.CityId==city.Id)
+                                                                    @city.Name
+                                                            }
+                                                        </li>
+                                                        <li class="list-group-item">Restaurantın Bulunduğu İlçe : 
+                                                            @foreach(var district in ViewBag.Districts)
+                                                            {
+                                                                @if(item.DistrictId==district.Id)
+                                                                    @district.Name
+                                                            }
+                                                        </li>
+                                                        <li class="list-group-item">Restaurantın Bulunduğu Tam Adresi : @item.Address</li>
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

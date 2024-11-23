@@ -1,0 +1,52 @@
+@model CategoryModel
+@{
+    Layout="_LayoutAdmin";
+    ViewData["Title"] = "Kategori Düzenle";
+    var Alert = TempData["Alert"];
+}
+
+<div class="container my-5">
+    <div class="mb-5">
+        <a href="javascript:history.back()" class="text-black text-decoration-none fw-bold"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Geri</span></a>
+    </div>
+    <div class="mb-5">
+        <h2 class="text-center">Kategori Düzenleme Formu</h2>
+    </div>
+    @if(TempData["Message"]!=null)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="alert @Alert text-center" style="max-width: 600px;">
+                @TempData["Message"]
+            </div>
+        </div>
+        
+    }
+    <div class="d-flex justify-content-center">
+        <div style="max-width: 600px;">
+            <form asp-controller="Admin" asp-action="EditCategory" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="categoryId" value="@Model.Id">
+                <div asp-validation-summary="All"></div>
+                <div class=" mb-5 d-flex justify-content-center">
+                    <img src="~/CategoryImages/@ViewBag.CategoryImageUrl" alt="@Model.Name" title="@Model.Name" style="max-width: 250px; max-height: 200px; border-color: #000; border-style: solid; border-width: 3px;">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="file" accept="image/jpeg, image/png, image/jpg">
+                    <label class="input-group-text" for="file">Resim Yükle</label>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"  placeholder="Yemeğin adını giriniz...">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description"  class="form-control"  placeholder="Yemeğin açıkılamsı">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+@model ComplaintModel
+@{
+    ViewData["Title"]="Şikayet Talebi";
+
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2>Şikayet Talebi Formu</h2>
+        </div>
+        <div class="mb-3">
+            <div>
+                <h5 class="text-black">Şikayet edilecek sipariş!</h5>
+            </div>
+            <div class="w-100" style="border-color: #ff6600; border-style: solid; border-radius: 25px;">
+                <div class="d-flex align-content-start flex-wrap">
+                    <h6 class="m-2 p-2 text-white" style="background-color: #ff6600; border-radius: 25px;">No : @Model.OrderModel.Id</h6>
+                    <h6 class="m-2 p-2 text-white" style="background-color: #ff6600; border-radius: 25px;">Restaurant : @Model.OrderModel.RestaurantName</h6>
+                    <h6 class="m-2 p-2 text-white" style="background-color: #ff6600; border-radius: 25px;">Toplam Tutar : @Model.OrderModel.TotalPrice TL</h6>
+                    <h6 class="m-2 p-2 text-white" style="background-color: #ff6600; border-radius: 25px;">Sipariş Tarihi : @Model.OrderModel.CreatedAt TL</h6>
+                    <h6 class="m-2 p-2 text-white" style="background-color: #ff6600; border-radius: 25px;">Teslimat Tarihi : @Model.OrderModel.DeliveryDate TL</h6>
+                </div>
+            </div>
+        </div>
+        <div>
+            <form asp-controller="User" asp-action="AddComplaint" method="post">
+                <input type="hidden" name="orderId" value="@Model.OrderId">
+                <div class="mb-3">
+                    <label asp-for="Subject" class="form-label"></label>
+                    <input asp-for="Subject" class="form-control" placeholder="Konu nedir?">
+                    <span asp-validation-for="Subject"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea class="form-control" asp-for="Description" rows="3" placeholder="Şikayetiniz Nedir?"></textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger"><span class="me-2">Gönder</span><i class="fa-regular fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

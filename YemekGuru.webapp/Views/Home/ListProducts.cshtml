@@ -1,0 +1,83 @@
+@model ListProductsViewModel
+@{
+    var Products = Model.ProductModels;
+    var Categories = Model.CategoryModels;
+    ViewData["Title"]="Ürünler";
+}
+
+<div>
+    <div>
+        <img src="~/gifs/food2.gif" alt="" class="w-100" style="height: 400px;">
+    </div>
+    <div class="container mb-5">
+        <div class="my-3">
+            <span class="text-white fw-bold py-1 px-3" style="background-color: #ff6600; border-radius: 20px;"><span>@ViewBag.City.Name </span><i class="fa-solid fa-chevron-right fa-lg mx-2"></i><span>@ViewBag.District.Name</span>
+        </div>
+        <div>
+            <h2 class="text-center text-white mt-4 mb-0 py-2" style="background-color: #ff6600; border-top-left-radius: 25px; border-top-right-radius: 25px;">Yemekler(@Products.Count())</h2>
+            <div class="my-0" style="background: rgb(255,255,255);
+                background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,102,0,1) 100%); height: 100px;"></div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                <div class="mb-">
+                    <h4 class="text-black text-center">Kategoriler</h4>
+                </div>
+                <ul class="list-group p-3" style="border-color: #ff6600; border-style: solid; border-radius: 20px;">
+                    <a id="categoryLink" class="list-group-item mb-3" asp-controller="Home" asp-action="ListProducts" title="Tüm Yemekler" style="border-bottom: #ff6600 5px; border-style: solid; border-radius: 20px;">
+                        <div class="row g-0">
+                            <div class="col-12 d-flex align-items-center justify-content-center">
+                                <div> 
+                                    <h6>Tüm Yemekler</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    @foreach(var c in Categories)
+                    {
+                        <a id="categoryLink" class="list-group-item mb-3" asp-controller="Home" asp-action="ListProducts" asp-route-categoryId="@c.Id" title="@c.Description" style="border-bottom: #ff6600 5px; border-style: solid; border-radius: 20px;">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="~/CategoryImages/@c.ImageUrl" alt="@c.Name" class="" style="height: 75px; width: 90px;">
+                                </div>
+                                <div class="col-8 d-flex align-items-center justify-content-center">
+                                    <div> 
+                                        <h6>@c.Name</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+                <div class="mb-3">
+                    <form asp-controller="Home" asp-action="ListProducts" class="d-flex" role="search" method="post">
+                        <input class="form-control me-1" type="search" placeholder="Yemek adı giriniz..." aria-label="Search" name="searchName" style="border-color: #ff6600; border-style: solid; border-width: 2px; border-radius: 155px;">
+                        <button class="btn bg-white" style="color: #ff6600; border-color: #ff6600; border-width: 2px; border-radius: 30px;" type="submit"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+                    </form>
+                </div>
+                @if(Products.Count()>0)
+                {
+                    <div class="row">
+                        @foreach(var p in Products)
+                        {
+                            <div class="col-12">
+                                @await Html.PartialAsync("_ProductCard2",@p)
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-warning text-center" role="alert">
+                        Yakınınızda böyle bir yemek bulunamadı!
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>

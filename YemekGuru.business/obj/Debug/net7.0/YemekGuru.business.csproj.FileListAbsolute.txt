@@ -1,0 +1,17 @@
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.business.deps.json
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.business.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.business.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.entity.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.repository.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.entity.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.repository.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.csproj.AssemblyReference.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.AssemblyInfoInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.AssemblyInfo.cs
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\refint\YemekGuru.business.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.pdb
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\ref\YemekGuru.business.dll
+C:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGur.9176B94C.Up2Date

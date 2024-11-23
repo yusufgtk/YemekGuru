@@ -1,0 +1,169 @@
+@model OrderSummaryViewModel
+@{
+    var UserModel = Model.UserModel;
+    var AddressModels = Model.AddressModels;
+    var CartItemModels = Model.CartItemModels;
+    var CartModel = Model.CartModel;
+    ViewData["Title"] = "Sipariş Özeti";
+    var Alert = TempData["Alert"];
+    
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Sipariş Öncesi Özet</h2>
+            <div>
+                <form ></form>
+            </div>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                @TempData["Message"]
+            </div>
+        }
+        <div class="row g-3">
+            <div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
+                <div class="mb-3">
+                    <h4 class="text-center text-black">Sepetindeki Ürünler</h4>
+                </div>
+                <div class="row">
+                    @foreach(var cartItem in CartItemModels)
+                    {
+                        @if(cartItem.Product!=null)
+                        {
+                            <div>
+                                @await Html.PartialAsync("_CartItemCard2",@cartItem)
+                            </div>
+                        }
+                    }
+                </div>
+                <div>
+                    <ul class="list-group fw-bold mb-3" style="border-radius: 15px; border-style: solid; border-color: #ff6600;">
+                        <li class="list-group-item" style="background-color: #ff6600; border-radius: 10px;"><h4 class="text-center text-dark">Sepet Özeti</h4></li>
+                        <li class="list-group-item">Ara Toplam Tutar : @CartModel.TotalPrice TL</li>
+                        <li class="list-group-item">İndirim Tutarı : 0 TL</li>
+                        <li class="list-group-item">Toplam Net Tutar: @(CartModel.TotalPrice) TL</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-6 col-xxl-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div >
+                            <div class="mb-3"><h4 class="text-center text-black my-0">Kullanıcı Bilgileri</h4></div>
+                            <ul class="list-group" style="border-width: 3px; border-radius: 15px;">
+                                <li class="list-group-item">
+                                    Ad Soyad : 
+                                    @if(UserModel.FirstName!=null||UserModel.LastName!=null)
+                                    {
+                                        @UserModel.FirstName <span class="me-1"></span> @UserModel.LastName
+                                    }
+                                    else
+                                    {
+                                        <span class="py-1 px-2 bg-danger fa-fade" style="border-radius: 15px;">Girilmedi!</span>
+                                    }
+                                </li>
+                                
+                                <li class="list-group-item">Telefon Numarası : 
+                                    @if(UserModel.PhoneNumber!=null)
+                                    {
+                                        @UserModel.PhoneNumber
+                                    }
+                                    else
+                                    {
+                                        <span class="py-1 px-2 bg-danger fa-fade" style="border-radius: 15px;">Girilmedi!</span>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div>
+                            <div class="mb-3 mt-5">
+                                <h3 class="text-center text-black">Adresler</h3>
+                            </div>
+                            <div>
+                                <ul class="list-group">
+                                    @if(UserModel.AddressId!=null&&AddressModels.Count()>0)
+                                    {
+                                        @foreach(var address in AddressModels)
+                                        {
+                                            <li class="list-group-item border border-2 mb-3 @(UserModel.AddressId==address.Id?"bg-warning":"")" style="border-radius: 15px;">
+                                                
+                                                <div class="d-flex justify-content-between">
+                                                    <div><h6>@address.Title</h6></div>
+                                                    <div>
+                                                        <form asp-controller="Cart" asp-action="ChangeAddress" method="post">
+                                                            <input type="hidden" name="userId" value="@UserModel.Id">
+                                                            <input type="hidden" name="addressId" value="@address.Id">
+                                                            @if(UserModel.AddressId!=address.Id)
+                                                            {
+                                                                <button type="submit" class="btn btn-success">Seç</button>
+                                                            }
+                                                            
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-1 d-flex align-content-start flex-wrap">
+                                                    <p class="p-2 m-1 bg-primary text-white" style="border-radius: 10px;">
+                                                        @foreach(var c in ViewBag.Cities)
+                                                        {
+                                                            @if(address.City==c.Id)
+                                                            {
+                                                                @c.Name
+                                                            }
+                                                        }
+                                                    </p>
+                                                    <p class="p-2 m-1 bg-success text-white" style="border-radius: 15px;">
+                                                        @foreach(var d in ViewBag.Districts)
+                                                        {
+                                                            @if(address.District==d.Id)
+                                                            {
+                                                                @d.Name
+                                                            }
+                                                        }
+                                                    </p>
+                                                    <p class="p-2 m-1 bg-info" style="border-radius: 15px;">@address.FullAddress</p>
+                                                    @if(address.Description!=null)
+                                                    {
+                                                        <p class="p-2 m-1 bg-secondary text-white" style="border-radius: 15px;">@address.Description</p>
+                                                    }
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item bg-danger">
+                                            <span class="fa-fade fw-bold text-white me-2">Adresiniz yok! Adres ekleyin.</span><a href="/user/profile" class="text-white">Adres Ekle</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div>
+                            @if(UserModel.AddressId!=null&&AddressModels.Count>0&&UserModel.FirstName!=null&&UserModel.LastName!=null&&UserModel.PhoneNumber!=null)
+                            {
+                                <div class="d-flex justify-content-end">   
+                                    <a href="/cart/payment" class="btn fw-bold text-white" style="background-color: #ff6600; "><span class="me-2">Ödeme Yap</span><i class="fa-solid fa-chevron-right fa-beat-fade fa-lg"></i></a>
+                                </div>
+                                
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger mt-5">
+                                    <span class="fa-fade">Kullanıcı bilgilerini ve adres bilgilerini doldurunuz!</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

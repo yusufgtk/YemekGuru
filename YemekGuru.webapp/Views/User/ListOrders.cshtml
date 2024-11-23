@@ -1,0 +1,197 @@
+@model List<OrderModel>
+
+@{
+    ViewData["Title"]="Siparişlerim";
+    var Alert=TempData["Alert"];
+}
+
+
+<div style="min-height: 75vh;">
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-center text-black">Siparişlerim</h2>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                @TempData["Message"]
+            </div>
+        }
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                Siparişiniz bulunmuyor.
+            </div>
+        }
+        <div class="row">
+            <div class="col-12">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    @foreach(var order in Model)
+                    {
+                        @if(order.Status==1)
+                        {
+                            <div class="accordion-item mb-4" style="border-width: 0px;">
+                                <h2 class="accordion-header" style="border-radius: 20px;">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse_@order.Id" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 20px; background-color: #fcbf13;">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="d-flex align-content-start flex-wrap">
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Sipariş No : @order.Id</p>
+                                                <p class="m-1 py-1 px-2  text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Restorant Adı : @order.RestaurantName</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Toplam Tutar : @order.TotalPrice TL</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Tarih : @order.CreatedAt</p>
+                                                <div class="ms-1">
+                                                    <span class="text-black">Hazırlanıyor...</span>
+                                                    <img src="~/Gifs/chef2.gif" alt="Hazırlanıyor..." style="width: 40px; height: 40px; border-radius: 20px;">
+                                                </div>
+                                            </div>
+                                            <div class="me-3">
+                                                <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@order.RestaurantId" class="text-white fw-bold p-1"><span class="me-1">Restoranta Git</span><i class="fa-solid fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse_@order.Id" class="accordion-collapse collapse mb-5"  style="background-color: #fcbf13; border-radius: 20px;">
+                                    <div class="accordion-body">
+                                        @foreach(var orderItem in order.OrderItemModels)
+                                        {
+                                            @if(orderItem!=null)
+                                            {
+                                                <div>
+                                                    @await Html.PartialAsync("_OrderItemCard",@orderItem)
+                                                </div>
+                                            }
+                                            
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if(order.Status==2)
+                        {
+                            <div class="accordion-item mb-4" style="border-width: 0px;">
+                                <h2 class="accordion-header" style="border-radius: 20px;">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse_@order.Id" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 20px; background-color: #fcbf13;">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="d-flex align-content-start flex-wrap">
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Sipariş No : @order.Id</p>
+                                                <p class="m-1 py-1 px-2  text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Restorant Adı : @order.RestaurantName</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Toplam Tutar : @order.TotalPrice TL</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Tarih : @order.CreatedAt</p>
+                                                <div class="ms-1">
+                                                    <span class="text-black">Yola Çıktı...</span>
+                                                    <img src="~/Gifs/order.gif" alt="Hazırlanıyor..." style="width: 40px; height: 40px; border-radius: 20px;">
+                                                </div>
+                                            </div>
+                                            <div class="me-3">
+                                                <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@order.RestaurantId" class="text-white fw-bold p-1"><span class="me-1">Restoranta Git</span><i class="fa-solid fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse_@order.Id" class="accordion-collapse collapse mb-5"  style="background-color: #fcbf13; border-radius: 20px;">
+                                    <div class="accordion-body">
+                                        @foreach(var orderItem in order.OrderItemModels)
+                                        {
+                                            @if(orderItem!=null)
+                                            {
+                                                <div>
+                                                    @await Html.PartialAsync("_OrderItemCard",@orderItem)
+                                                </div>
+                                            }
+                                            
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if(order.Status==3)
+                        {
+                            <div class="accordion-item mb-4" style="border-width: 0px;">
+                                <h6 class="accordion-header bg-success d-flex justify-content-between" style="border-radius: 22px; border-color: #ff6600; border-style: solid; border-width: 3px;">
+                                    <button class="accordion-button bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse_@order.Id" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style=" border-radius: 20px;">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="d-flex align-content-start flex-wrap">
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Sipariş No : @order.Id</p>
+                                                <p class="m-1 py-1 px-2  text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Restorant Adı : @order.RestaurantName</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Toplam Tutar : @order.TotalPrice TL</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Tarih : @order.CreatedAt</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Teslimat Tarihi : @order.DeliveryDate</p>
+                                                <div class="ms-1">
+                                                    <span class="text-black">Teslim Edildi.</span>
+                                                    <i class="fa-solid fa-circle-check fa-xl text-white"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="me-3 d-flex flex-wrap pt-2">
+                                        <div>
+                                            <a asp-controller="User" asp-action="AddComplaint" asp-route-orderId="@order.Id" class="text-white" title="Siparişinizde sorun yaşadığınızda şikayet talebi oluşturun!">Sorun mu yaşadınız?</a>
+                                        </div>
+                                        <div>
+                                            <a asp-controller="Restaurant" asp-action="AddRestaurantComment" asp-route-orderId="@order.Id" class="text-white fw-bold p-1"><span class="me-1">Restoranta yorum yap</span><i class="fa-solid fa-comment"></i></a>
+                                        </div>
+                                    </div>
+                                </h6>
+                                <div id="panelsStayOpen-collapse_@order.Id" class="accordion-collapse bg-success collapse mb-5"  style=" border-radius: 20px;">
+                                    <div class="accordion-body">
+                                        <div>
+                                            <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@order.RestaurantId" class="text-white fw-bold p-1"><span class="me-1">Restoranta Git</span><i class="fa-solid fa-chevron-right"></i></a>
+                                        </div>
+                                        @foreach(var orderItem in order.OrderItemModels)
+                                        {
+                                            @if(orderItem!=null)
+                                            {
+                                                <div>
+                                                    @await Html.PartialAsync("_OrderItemCard",@orderItem)
+                                                </div>
+                                            }
+                                            
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if(order.Status==-1)
+                        {
+                            <div class="accordion-item mb-4" style="border-width: 0px;">
+                                <h2 class="accordion-header" style="border-radius: 20px;">
+                                    <button class="accordion-button bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse_@order.Id" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="border-color: #ff6600; border-style: solid; border-width: 3px; border-radius: 20px;">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="d-flex align-content-start flex-wrap">
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Sipariş No : @order.Id</p>
+                                                <p class="m-1 py-1 px-2  text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Restorant Adı : @order.RestaurantName</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Toplam Tutar : @order.TotalPrice TL</p>
+                                                <p class="m-1 py-1 px-2 text-white fw-bold" style="border-radius: 10px; background-color: #ff6600;">Tarih : @order.CreatedAt</p>
+                                                <div class="ms-1">
+                                                    <span class="text-black">İptal Edildi!</span>
+                                                    <i class="fa-solid fa-circle-xmark fa-xl text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div class="me-3">
+                                                <a asp-controller="Restaurant" asp-action="Detail" asp-route-restaurantId="@order.RestaurantId" class="text-white fw-bold p-1"><span class="me-1">Restoranta Git</span><i class="fa-solid fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse_@order.Id" class="accordion-collapse bg-danger collapse mb-5"  style=" border-radius: 20px;">
+                                    <div class="accordion-body">
+                                        @foreach(var orderItem in order.OrderItemModels)
+                                        {
+                                            @if(orderItem!=null)
+                                            {
+                                                <div>
+                                                    @await Html.PartialAsync("_OrderItemCard",@orderItem)
+                                                </div>
+                                            }
+                                            
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

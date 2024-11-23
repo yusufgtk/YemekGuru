@@ -1,0 +1,125 @@
+@model List<CommentModel>
+
+@{
+    Layout="_LayoutAdmin";
+    ViewData["Title"]="Yorum Onayı";
+    var Alert = TempData["Alert"];
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Yorum Onayı Bakleyenler (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="text-black text-decoration-none fw-bold"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Onay bekleyen yorum bulunmamaktadır!</span>
+            </div>
+        }
+        else
+        {
+            <div>
+                <table class="table shadow-lg text-white" style="background-color: #8f5902; border-radius: 10px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Sipariş Id</th>
+                            <th scope="col">Restaurant Id</th>
+                            <th scope="col">Kullanıcı Adı</th>
+                            <th scope="col">Yorum İçeriği</th>
+                            <th scope="col">Paylaşılma Tarihi</th>
+                            <th scope="col" style="width: 175px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row">@item.Id</th>
+                                <td>@item.OrderId</td>
+                                <td>@item.RestaurantId</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Description</td>
+                                <td>@item.CreatedAt</td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="me-2">
+                                            <form asp-controller="Admin" asp-action="ConfirmComment" method="post">
+                                                <input type="hidden" name="commentId" value="@item.Id">
+                                                <button type="submit" class="btn btn-success">Onayla</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <form asp-controller="Admin" asp-action="RejectComment" method="post">
+                                                <input type="hidden" name="commentId" value="@item.Id">
+                                                <button type="submit" class="btn btn-danger">Reddet</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @* <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@item.Name</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/ProductImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/ProductImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            Kategori : 
+                                                            @foreach(var c in ViewBag.Categories)
+                                                            {
+                                                                @if(item.CategoryId==c.Id)
+                                                                    @c.Name
+                                                            }
+                                                        </li>
+                                                        <li class="list-group-item">Kalori : @item.Calorie</li>
+                                                        <li class="list-group-item">Açıklama : @item.Description</li>
+                                                        <li class="list-group-item">İçerik : @item.Content</li>
+                                                        <li class="list-group-item">Önceki Fiyat : @item.PreviousPrice</li>
+                                                        <li class="list-group-item">Fiyat : @item.Price</li>
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> *@
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

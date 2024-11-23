@@ -1,0 +1,290 @@
+@model AdminDashboardViewModel
+@{
+    Layout="_LayoutAdmin";
+    ViewData["Title"]="Admin Dashboard";
+}
+@section Scripts {
+    <script src="~/js/signalr-client.js"></script>
+}
+<meta http-equiv="refresh" content="120">
+<div style="background-color: #E5E1DA;">
+    <div class="container py-5">
+        <div class="mb-5">
+            <h1 class="text-black fw-bold text-center"><span class="me-3">Dashboard</span><i class="fa-solid fa-chart-line fa-lg"></i></h1>
+            <div class="d-flex justify-content-center mt-3">
+                <img src="~/Icons/performans.png" alt="" style="width: 100px; height: 100px;">
+                <h6 class="text-black fst-italic">Performance</h6>
+            </div>
+            <div class="alert alert-info text-center d-flex justify-content-between mt-3">
+                <div>
+                    <i class="fa-solid fa-arrows-rotate fa-xl me-2"></i><span>Veriler 2 dakika'da bir güncellenmektedir!</span>
+                </div>
+                <div>
+                    <a href="/admin/index" class="btn btn-primary" style="border-radius: 25px;">Sayfayı Yenile</a>
+                </div>
+                
+            </div>
+        </div>
+        <div>
+                
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin" class="card bg-success mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px">
+                            <span class="me-2">Anlık Kullanıcı Sayısı (Trafik Durumu)</span>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-users-between-lines fa-lg me-3"></i><span id="span-total-client-count" class="fa-beat-fade"></span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listrestaurants" class="card bg-primary mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Restaurant Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-hotel fa-xl me-3"></i><span>@Model.RestaurantsNumber Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listusers" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #3C2317;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Kullanıcı Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-users fa-xl me-3"></i><span>@Model.UsersNumber Kişi</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listorders" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #142F43;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Sipari Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-list-check fa-xl me-3"></i><span>@Model.OrdersNumber Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listproducts" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #ff6600;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Ürün Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-boxes-stacked fa-xl me-3"></i><span>@Model.ProductsNumber Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card bg-success mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">Şuan Açık Restauran Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-lock-open fa-xl me-3"></i><span>@Model.OpenRestaurantsNumber Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #820300;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">Şuan Kapalı Restaurant Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-lock fa-xl me-3"></i><span>@Model.CloseRestaurantsNumber Adet</span></h5>
+                            
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #37B5B6;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">Sepetinde Ürün Olan Kullanıcı Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-cart-plus fa-xl me-3"></i><span>@Model.HaveCartItemsUserNumber Kişi</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #000;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">Kuponu Olan Kullanıcı Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-ticket fa-xl me-3"></i><span>500 Kişi</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #000;">
+                        <div class="card-header fw-bold" style="border-radius: 25px">Kuponu Olmayan Kullanıcı Sayısı</div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-ban fa-xl me-3"></i><span>500 Kişi</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listapplysellers" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #E7B10A;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Onay Bekleyen Satıcı Başvuruları</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-file-signature fa-xl me-3"></i><span>@Model.ConfirmWaitApplySellerNumber Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #000;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Kasadaki Toplam Tutar</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-vault fa-xl me-3"></i><span>10.756.892,00 TL</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #000;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Havuzdaki Toplam Tutar</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-clock-rotate-left fa-spin fa-spin-reverse fa-xl me-3"></i><span>15.756.892,00 TL</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/waitapprovedrestaurants" class="card mb-3 text-dark text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #FBD85D;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Onay Bekleyen Restaurant Güncellemeleri</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            @if(Model.WaitApprovedRestaurantsCount>0)
+                            {
+                                <h5 class="card-title"><i class="fa-solid fa-spinner fa-spin-pulse fa-xl me-3"></i><span>@Model.WaitApprovedRestaurantsCount Adet</span></h5>
+                            }
+                            else
+                            {
+                                <h5 class="card-title"><i class="fa-solid fa-circle-check fa-xl me-3"></i><span>@Model.WaitApprovedRestaurantsCount Adet</span></h5>
+                            }
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/waitapprovedproducts" class="card mb-3 text-dark text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #F9B572;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Onay Bekleyen Ürünler</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title">
+                                @if(Model.WaitApprovedProductsCount>0)
+                                {
+                                    <i class="fa-solid fa-spinner fa-spin-pulse fa-xl me-3"></i><span>@Model.WaitApprovedProductsCount Adet</span>
+                                }
+                                else
+                                {
+                                    <i class="fa-solid fa-circle-check fa-xl me-3"></i><span>@Model.WaitApprovedProductsCount Adet</span>
+                                }
+                                
+                            </h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listcategories" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #3D3B40;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Kategori Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-layer-group fa-xl me-3"></i></i><span>@Model.CategoriesNumber Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/WaitApprovedComments" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #8f5902;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Onay Bekleyen Yorum Sayısı</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            @if(Model.WaitApprovedCommentsCount>0)
+                            {
+                                <h5 class="card-title"><i class="fa-solid fa-comment fa-xl me-3"></i><span>@Model.WaitApprovedCommentsCount Adet</span></h5>
+                            }
+                            else
+                            {
+                                <h5 class="card-title"><i class="fa-solid fa-circle-check fa-xl me-3"></i><span>@Model.WaitApprovedCommentsCount Adet</span></h5>
+                            }
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #9E6F21;">
+                        <div class="card-header fw-bold" style="border-radius: 25px"><span class="me-2">Toplam Yorum Sayısı</span>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-comment fa-xl me-3"></i></i><span>@Model.TotalCommentsCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listcomplaints" class="card bg-danger mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Çözülecek Şikayetler</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation fa-xl me-3"></i><span>@Model.ActiveComplaintsCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="" class="card mb-3 text-white text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #416D19;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">Toplam Çözülen Şikayetler</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation fa-xl me-3"></i><span>@Model.TotalCompletedComplaintCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-center">
+                    <a href="/admin/listfeedbacks" class="card mb-3 text-dark text-decoration-none shadow-lg" style="width: 100%; border-radius: 25px; background-color: #9ADE7B;">
+                        <div class="card-header fw-bold d-flex justify-content-between" style="border-radius: 25px"><span class="me-2">İncelenecek Geri Bildirimler</span>
+                            <div>
+                                <i class="fa-solid fa-hand-pointer fa-beat-fade fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex align-content-center flex-wrap justify-content-center">
+                            <h5 class="card-title"><i class="fa-regular fa-circle-question fa-xl me-3"></i><span>@Model.WaitApprovedFeedbackCount Adet</span></h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+Date : 2024-03-13 13:22:27
+Directory : c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business
+Total : 23 files,  5565 codes, 12 comments, 42 blanks, all 5619 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |      5,287 |          0 |          0 |      5,287 |
+| C#         |         16 |        227 |         12 |         37 |        276 |
+| XML        |          3 |         38 |          0 |          4 |         42 |
+| Properties |          1 |         13 |          0 |          1 |         14 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                 |         23 |      5,565 |         12 |         42 |      5,619 |
+| . (Files)                                                                                                                         |          1 |         11 |          0 |          4 |         15 |
+| Abstract                                                                                                                          |         13 |        208 |          1 |         30 |        239 |
+| bin                                                                                                                               |          1 |      1,322 |          0 |          0 |      1,322 |
+| bin\Debug                                                                                                                         |          1 |      1,322 |          0 |          0 |      1,322 |
+| bin\Debug\net7.0                                                                                                                  |          1 |      1,322 |          0 |          0 |      1,322 |
+| obj                                                                                                                               |          8 |      4,024 |         11 |          8 |      4,043 |
+| obj (Files)                                                                                                                       |          4 |      3,992 |          0 |          0 |      3,992 |
+| obj\Debug                                                                                                                         |          4 |         32 |         11 |          8 |         51 |
+| obj\Debug\net7.0                                                                                                                  |          4 |         32 |         11 |          8 |         51 |
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                          | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IAddressService.cs                                                   | C#         |         12 |          0 |          2 |         14 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IApplySellerService.cs                                               | C#         |         13 |          0 |          2 |         15 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICartItemService.cs                                                  | C#         |         13 |          0 |          2 |         15 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICartService.cs                                                      | C#         |         10 |          0 |          2 |         12 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICategoryService.cs                                                  | C#         |         14 |          0 |          2 |         16 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICityService.cs                                                      | C#         |         11 |          0 |          2 |         13 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICommentService.cs                                                   | C#         |         16 |          0 |          3 |         19 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\ICompliantService.cs                                                 | C#         |         15 |          0 |          3 |         18 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IDistrictService.cs                                                  | C#         |         12 |          0 |          2 |         14 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IFeedbackService.cs                                                  | C#         |         15 |          0 |          4 |         19 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IOrderService.cs                                                     | C#         |         30 |          1 |          2 |         33 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IProductService.cs                                                   | C#         |         26 |          0 |          2 |         28 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\Abstract\IRestaurantService.cs                                                | C#         |         21 |          0 |          2 |         23 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\YemekGuru.business.csproj                                                     | XML        |         11 |          0 |          4 |         15 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\bin\Debug\net7.0\YemekGuru.business.deps.json                                 | JSON       |      1,322 |          0 |          0 |      1,322 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs               | C#         |          3 |          1 |          1 |          5 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.AssemblyInfo.cs                           | C#         |          9 |          9 |          5 |         23 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.GeneratedMSBuildEditorConfig.editorconfig | Properties |         13 |          0 |          1 |         14 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\Debug\net7.0\YemekGuru.business.GlobalUsings.g.cs                         | C#         |          7 |          1 |          1 |          9 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\YemekGuru.business.csproj.nuget.dgspec.json                               | JSON       |        234 |          0 |          0 |        234 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\YemekGuru.business.csproj.nuget.g.props                                   | XML        |         19 |          0 |          0 |         19 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\YemekGuru.business.csproj.nuget.g.targets                                 | XML        |          8 |          0 |          0 |          8 |
+| c:\Users\yusuf\Desktop\YemekGuru\YemekGuru.business\obj\project.assets.json                                                       | JSON       |      3,731 |          0 |          0 |      3,731 |
+| Total                                                                                                                             |            |      5,565 |         12 |         42 |      5,619 |
++-----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

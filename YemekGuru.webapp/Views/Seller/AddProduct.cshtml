@@ -1,0 +1,62 @@
+@model AddProductViewModel
+@{
+    Layout="_LayoutSeller";
+    ViewData["Title"] = "Yemek Ekle";
+}
+
+<div class="container my-5">
+    <div class="mb-5">
+        <h2 class="text-center">Yemek Ekleme Formu</h2>
+    </div>
+    <div>
+        <div>
+            <form asp-controller="Seller" asp-action="AddProduct" method="post" enctype="multipart/form-data">
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="file" accept="image/jpeg, image/png, image/jpg">
+                    <label class="input-group-text" for="file">Resim Yükle</label>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"  placeholder="Yemeğin adını giriniz...">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label"></label>
+                    <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
+                        <option selected>Seçiniz...</option>
+                        @foreach(var c in ViewBag.Categories)
+                        {
+                            <option value="@c.Id">@c.Name</option>
+                        }
+                        
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description"  class="form-control"  placeholder="Yemeğin açıklamsı">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Content" class="form-label"></label>
+                    <input asp-for="Content" class="form-control"  placeholder="Yemeğin içindekileri giriniz...">
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Calorie" class="form-label"></label>
+                    <input asp-for="Calorie" class="form-control"  placeholder="Yemeğin kalorisini giriniz...">
+                    <span asp-validation-for="Calorie" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-control"  placeholder="Yemeğin fiyatını giriniz...">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

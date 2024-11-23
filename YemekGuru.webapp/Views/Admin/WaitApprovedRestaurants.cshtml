@@ -1,0 +1,162 @@
+@model List<RestaurantModel>
+
+@{
+    Layout="_LayoutAdmin";
+    ViewData["Title"]="Restorant Güncelleme Onayı";
+    var Alert = TempData["Alert"];
+}
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Restorant Güncellemesi Bakleyenler Listesi (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="text-black text-decoration-none fw-bold"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        <div class=" mb-4">
+            <form asp-controller="Admin" asp-action="WaitApprovedRestaurants" method="post">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Restorant No(id) veya restorant adını giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color: #FBD85D; border-width: 2px;">
+                    <button class="btn px-3" type="submit" id="button-addon2"   style="color: #FBD85D; border-color: #FBD85D; border-style: solid; border-width: 2px;"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                </div>
+            </form>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+        else if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Onay bekleyen restorant bulunmamaktadır!</span>
+            </div>
+        }
+        else
+        {
+            <div>
+                <table class="table shadow-lg" style="background-color: #FBD85D; border-radius: 10px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col" style="width: 200px;">Resim</th>
+                            <th scope="col">Restorant Adı</th>
+                            <th scope="col">Şehir</th>
+                            <th scope="col">İlçe</th>
+                            <th scope="col">Min Sipariş Tutarı</th>
+                            <th scope="col" style="width: 175px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row">@item.Id</th>
+                                <td>
+                                    @if(item.ImageUrl!=null)
+                                    {
+                                        <img src="~/RestaurantImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/RestaurantImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                    }
+                                </td>
+                                <td>@item.Name</td>
+                                <td>
+                                    @foreach(var c in ViewBag.Cities)
+                                    {
+                                        @if(item.CityId==c.Id)
+                                            @c.Name
+                                    }
+                                </td>
+                                <td>
+                                    @foreach(var d in ViewBag.Districts)
+                                    {
+                                        @if(item.DistrictId==d.Id)
+                                            @d.Name
+                                    }
+                                </td>
+                                <td>@item.MinimumOrderPrice TL</td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="me-2">
+                                            <form asp-controller="Admin" asp-action="ConfirmRestaurant" method="post">
+                                                <input type="hidden" name="restaurantId" value="@item.Id">
+                                                <button type="submit" class="btn btn-success">Onayla</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <form asp-controller="Admin" asp-action="RejectRestaurant" method="post">
+                                                <input type="hidden" name="restaurantId" value="@item.Id">
+                                                <button type="submit" class="btn btn-danger">Reddet</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@item.Name</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/RestaurantImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/RestaurantImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">Restorant Açıklaması : @item.Description</li>
+                                                        <li class="list-group-item">Restorant Telefon Numarası : @item.PhoneNumber</li>
+                                                        <li class="list-group-item">Email : @item.EmailAdress</li>
+                                                        <li class="list-group-item">Kullanıcı Id : @item.UserId</li>
+                                                        <li class="list-group-item">Restorantın Bulunduğu Şehir :  
+                                                            @foreach(var c in ViewBag.Cities)
+                                                            {
+                                                                @if(item.CityId==c.Id)
+                                                                    @c.Name
+                                                            }</li>
+                                                        <li class="list-group-item">Restorantın Bulunduğu İlçe : 
+                                                            @foreach(var d in ViewBag.Districts)
+                                                            {
+                                                                @if(item.DistrictId==d.Id)
+                                                                    @d.Name
+                                                            }
+                                                        </li>
+                                                        <li class="list-group-item">Restorantın Adresi : @item.Address</li>
+                                                        <li class="list-group-item">Açılış Saati : @item.OpeningTime</li>
+                                                        <li class="list-group-item">Kapanış Saati : @item.ClosingTime</li>
+                                                        <li class="list-group-item">Minimum Sipariş Tutarı : @item.MinimumOrderPrice TL</li>
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

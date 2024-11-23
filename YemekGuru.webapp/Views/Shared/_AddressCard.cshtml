@@ -1,0 +1,49 @@
+@model AddressModel
+
+<div class="card w-100" style="border-radius: 20px;">
+    <div class="card-header d-flex justify-content-between"><strong>@Model.Title</strong>
+        <div class="d-flex">
+            <div class="me-3">
+                <form asp-controller="User" asp-action="DeleteAddress" method="post">
+                    <input type="hidden" name="addressId" value="@Model.Id">
+                    <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                </form>
+            </div>
+            <div>
+                <form asp-controller="User" asp-action="SelectAddress" method="post">
+                    <input type="hidden" name="addressId" value="@Model.Id">
+                    <button class="btn btn-success">Seç</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+    <h5 class="card-title p-0"></h5>
+    <div class="d-flex align-content-start flex-wrap bg-transparent">
+        <span class="bg-danger mb-2 me-2 p-2 text-white" style="border-radius: 20px;">@Html.DisplayNameFor(model=>model.Country) : @Model.Country</span>
+        <span class="bg-primary mb-2 me-2 p-2 text-white" style="border-radius: 20px;">@Html.DisplayNameFor(model=>model.City) : 
+            @foreach(var city in ViewBag.Cities)
+            {
+                @if(Model.City==city.Id)
+                {
+                    @city.Name
+                }
+            }
+        </span>
+        <span class="bg-success mb-2 me-2 p-2 text-white" style="border-radius: 20px;">@Html.DisplayNameFor(model=>model.District) : 
+            @foreach(var district in ViewBag.Districts)
+            {
+                @if(Model.District==district.Id)
+                {
+                    @district.Name
+                }
+            }
+        </span>
+        <span class="bg-info mb-2 me-2 p-2 text-dark" style="border-radius: 20px;">@Html.DisplayNameFor(model=>model.FullAddress) : @Model.FullAddress</span>
+        @if(Model.Description!=null)
+        {
+            <span class="bg-warning mb-2 me-2 p-2 text-dark" style="border-radius: 20px;">@Html.DisplayNameFor(model=>model.Description) : @Model.Description</span>
+        }
+            
+    </div>
+</div>

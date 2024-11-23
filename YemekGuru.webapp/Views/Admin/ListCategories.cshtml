@@ -1,0 +1,160 @@
+@model List<CategoryModel>
+
+@{
+    
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "kategoriler";
+    var Alert = TempData["Alert"];
+    var ReturnUrl="/admin/listcategories";
+}
+
+
+<div>
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-black text-center">Kategori Listesi (Son 30)</h2>
+        </div>
+        <div class="mb-3">
+            <a href="/admin/index" class="fw-bold" style="color: #3D3B40;"><i class="fa-solid fa-angle-left fa-lg me-2"></i><span>Dashboard</span></a>
+        </div>
+        <div class="mb-5">
+            <form asp-controller="Admin" asp-action="ListCategories" method="post">
+                <div class="input-group mb-3">
+                    <input name="search" type="text" class="form-control" placeholder="Kategori Id veya kategori adını giriniz..." aria-label="Recipient's username" aria-describedby="button-addon2" style="border-color: #3D3B40; border-style: solid; border-width: 2px;">
+                    <button class="btn px-3" type="submit" id="button-addon2" style="border-width: 2px; border-color: #3D3B40; color: #3D3B40;"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+                </div>
+            </form>
+        </div>
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert @Alert text-center">
+                <span>@TempData["Message"]</span>
+            </div>
+        }
+
+        @if(Model.Count()<=0)
+        {
+            <div class="alert alert-warning text-center">
+                <span>Kategori bulunmamaktadır!</span><a href="/admin/addcategory" class="fw-bold mx-2" style="color: #3D3B40;"><span class="me-2 fa-fade">Ekle</span><i class="fa-solid fa-plus fa-fade"></i>
+            </div>
+        }
+        else
+        {
+            <div class="mb-2 d-flex justify-content-end">
+                <a href="/admin/addcategory" class="btn text-white" style="background-color: #3D3B40;"><span class="me-2">Ekle</span><i class="fa-solid fa-plus fa-lg"></i></a>
+            </div>
+            <div>
+                <table class="table shadow-lg text-white" style=" border-radius: 10px; background-color: #3D3B40;">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 150px;">Kategori Id</th>
+                            <th scope="col" style="width: 250px;">Resim</th>
+                            <th scope="col">Kategori Adı Adı</th>
+                            <th scope="col">Açıklaması</th>
+                            <th scope="col">Oluşturulma zamanı</th>
+                            <th scope="col" style="width: 150px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr class="fw-bold">
+                                <th scope="row">@item.Id</th>
+                                <td>
+                                    @if(item.ImageUrl!=null)
+                                    {
+                                        <img src="~/CategoryImages/@item.ImageUrl" alt="@item.Name" width="100%" height="200px" style="border-style: solid; border-color: #000; border-radius: 20px; border-width: 2px; min-width: 200px;">
+                                    }
+                                </td>
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.CreatedAt</td>
+                                <td>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div>
+                                            <a asp-controller="Admin" asp-action="EditCategory" asp-route-categoryId="@item.Id" class="btn btn-success"><i class="fa-regular fa-pen-to-square fa-lg"></i></a>
+                                        </div>
+                                        <div>
+                                            <form asp-controller="Admin" asp-action="DeleteCategory" method="post">
+                                                <input type="hidden" name="categoryId" value="@item.Id">
+                                            </form>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1_@item.Id">
+                                                <i class="fa-solid fa-trash fa-xl"></i>
+                                            </button>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal1_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 fw-bold text-danger" id="exampleModalLabel"><span class="me-3">Dikkat!</span><i class="fa-solid fa-triangle-exclamation fa-shake fa-xl"></i></h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h6 class="text-black fw-bold">Kategorinin silinmesi önerilmez çünkü kategori silindiğinde silinen kategoriye bağlı ürünler kategorisiz kalacaktır. Bunun yerine kategoriyi güncelleyin!</h6>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <form asp-controller="Admin" asp-action="DeleteCategory" method="post">
+                                                        <input type="hidden" name="categoryId" value="@item.Id">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <span class="me-2 fw-bold">Sil</span><i class="fa-solid fa-skull-crossbones fa-lg"></i>
+                                                        </button>
+                                                    </form>
+                                                    
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2_@item.Id">
+                                            Detaylı incele
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal2_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">@item.Name</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        @if(item.ImageUrl!=null)
+                                                        {
+                                                            <img src="~/CategoryImages/@item.ImageUrl" alt="@item.Name" width="100%">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/CategoryImages/yemekguru.jpg" alt="@item.Name" width="100%">
+                                                        }
+                                                    </div>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">Ürün Id : @item.Id</li>
+                                                        <li class="list-group-item">Ürün Id : @item.Name</li>
+                                                        <li class="list-group-item">Ürün Açıklaması : @item.Description</li>
+                                                        <li class="list-group-item">Oluşturma Tarihi : @item.CreatedAt</li>
+                                                        <li class="list-group-item">Güncellenme Tarihi : @item.UpdatedAt</li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                                    <div class="modal-footer d-flex justify-content-between">
+                                                        <button type="button" class="btn btn-danger ms-auto" data-bs-dismiss="modal">Kapat</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

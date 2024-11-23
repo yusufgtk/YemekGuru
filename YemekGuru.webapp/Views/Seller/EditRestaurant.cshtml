@@ -1,0 +1,77 @@
+@model EditRestaurantViewModel
+@{
+    Layout="_LayoutSeller";
+    ViewData["Title"] = "Restaurant";
+}
+
+<div class="bg-dark">
+    <div class="container py-5">
+        <div class="mb-5">
+            <h2 class="text-center text-white">Restaurant Bilgileriniz</h2>
+        </div>
+        <form asp-controller="Seller" asp-action="EditRestaurant" method="post" enctype="multipart/form-data">
+            <div>
+                <div class="d-flex justify-content-center">
+                    @if(Model.ImageUrl!=null)
+                    {
+                        <img src="~/RestaurantImages/@Model.ImageUrl" alt="" style="width: 250px; height: 200px; border-radius: 20px;">
+                    }
+                    else
+                    {
+                        <img src="~/ProductImages/yemekguru.jpg" alt="" style="width: 250px; height: 200px; border-radius: 20px;">
+                    }
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="input-group my-3" style="max-width: 600px;">
+                        <input type="file" name="file" class="form-control">
+                        <label class="input-group-text" for="file">Resim Yükle(.jpeg, .jpg, .png)</label>
+                    </div>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="d-flex justify-content-end">
+                    <a href="javascript:history.go(-1)" class="btn btn-danger me-3" style="border-radius: 20px;"><span class="me-2">İptal Et</span><i class="fa-solid fa-xmark fa-lg"></i></a>
+                    <button type="submit" class="btn btn-success" style="border-radius: 20px;"><span class="me-2">Kaydet</span><i class="fa-regular fa-floppy-disk fa-lg"></i></button>
+                </div>
+                <div class="mb-5 mt-2 bg-white" style="border-color: #ff6600; border-width: 5px; border-style: solid; border-radius: 20px;">
+                    <ul class="list-group" style="border-radius: 20px;">
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.Name) : <input asp-for="Name" class="form-control">
+                        <span asp-validation-for="Name" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.Description) : <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.PhoneNumber) : <input asp-for="PhoneNumber" class="form-control">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.EmailAdress) : <input asp-for="EmailAdress" class="form-control">
+                        <span asp-validation-for="EmailAdress" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.CityId) : 
+                            <select asp-for="CityId" class="form-select" aria-label="Default select example">
+                                @foreach(var city in ViewBag.Cities)
+                                {
+                                    <option value="@city.Id">@city.Name</option>
+                                }
+                                
+                            </select>
+                            <span asp-validation-for="CityId" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.DistrictId) : 
+                            <select asp-for="DistrictId" class="form-select" aria-label="Default select example">
+                                @foreach(var district in ViewBag.Districts)
+                                {
+                                    <option value="@district.Id">@district.Name</option>
+                                }
+                            </select>
+                        <span asp-validation-for="DistrictId" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.Address) : <input asp-for="Address" class="form-control">
+                        <span asp-validation-for="Address" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.OpeningTime) : <input asp-for="OpeningTime" class="form-control" type="time" style="max-width: 300px;">
+                        <span asp-validation-for="OpeningTime" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.ClosingTime) : <input asp-for="ClosingTime" class="form-control" type="time" style="max-width: 300px;">
+                        <span asp-validation-for="ClosingTime" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.DeliveryTime) : <input asp-for="DeliveryTime" class="form-control" style="max-width: 300px;">
+                        <span asp-validation-for="DeliveryTime" class="text-danger"></span></li>
+                        <li class="list-group-item fw-bold">@Html.DisplayNameFor(i=>Model.MinimumOrderPrice) : <input asp-for="MinimumOrderPrice" class="form-control" style="max-width: 300px;">
+                        <span asp-validation-for="MinimumOrderPrice" class="text-danger"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

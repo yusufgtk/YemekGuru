@@ -1,0 +1,48 @@
+@model EditUserViewModel
+@{
+    ViewData["Title"] = "Bilgilerimi Güncelleme";
+    
+}
+
+<div class="container my-5">
+    <div>
+        <h2 class="text-center">Kullanıcı Bilgilerimi Güncelleme Formu</h2>
+    </div>
+    <div>
+        <form asp-controller="User" asp-action="EditUser" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All"></div>
+            <input type="hidden" name="userId" value="@Model.Id">
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file">
+                <label class="input-group-text" for="file">Resim Yükle</label>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control">
+                <span asp-validation-for="FirstName" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EmailAddress" class="form-label"></label>
+                <input asp-for="EmailAddress" class="form-control">
+                <span asp-validation-for="EmailAddress" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <input asp-for="PhoneNumber" class="form-control">
+                <span asp-validation-for="PhoneNumber" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BirthDay" class="form-label"></label>
+                <input asp-for="BirthDay" type="datetime-local" class="form-control">
+                <span asp-validation-for="BirthDay" class="text-danger mt-1 fw-bold"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Güncelle</button>
+        </form>
+    </div>
+</div>

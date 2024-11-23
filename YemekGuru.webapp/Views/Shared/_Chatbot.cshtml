@@ -1,0 +1,170 @@
+
+<div id="divChatbot" class="p-2" style="background-color:#ff7700; border-color:#ff1100; border-style:solid; border-radius:25px; max-widht:400px; display:none;">
+    <button id="offbtn" onclick="toggleChatbot()" style="background-color:#ff7700; border-radius:25px;">Kapat</button>
+    <div class="d-flex justify-content-center shadow-lg">
+        <img src="~/Gifs/guru-chef.gif" style="height:100px; border-style:solid; border-radius:25px; border-color:#ff1100;">
+    </div>
+
+    <div>
+        <ul id="listChat" class="list-group pe-1" style="overflow-y: scroll; height:350px; max-widht:400px;">
+            <!-- @for(int i=1; i<=10; i++)
+            {
+                <li class="list-group-item my-1" style="border-style:solid; border-radius:25px;"><i class="fa-solid fa-robot me-1" style="color: #ff6600;"></i>itme @i</li>
+            } -->
+            <li id="0" class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="~/Icons/guru-chef.jpeg" style="width:50px;  border-radius:50%;" class="pe-1">Bana soru sor?</li>
+        </ul>
+    </div>
+    <div class="pt-2">
+        <form class="d-flex" role="search">
+            <input id="textChat" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  style="border-style:solid; border-radius:25px;">
+            <button class="btn btn-outline-success" type="button" onclick="Send()" style="border-style:solid; border-radius:25px;"><i class="fa-regular fa-paper-plane"></i></button>
+        </form>
+        
+    </div>
+</div>
+
+<script>
+    const ul = document.getElementById('listChat');
+    let id=1;
+    function Send() {
+        const text = document.getElementById('textChat').value.toLowerCase().trim(); // Get trimmed and lowercased text
+        if(text=="")
+        {
+            return;
+        }
+
+        if (text.includes("sipariş") && (text.includes("git")|| text.includes("getir"))) {
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                var htmlToAdd2 = '<li class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.innerHTML += htmlToAdd2;
+                ul.scrollTop = ul.scrollHeight;
+                Write("Yönlendiriyorum...", id);
+            }, 1000);
+
+            id++;
+            
+            setTimeout(() => {
+                window.location.href = "http://localhost:5249/User/ListOrders";
+            }, 3000);
+
+        }
+        else if (text.includes("sepet") && (text.includes("git")|| text.includes("getir"))) {
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                var htmlToAdd2 = '<li class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px;; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.innerHTML += htmlToAdd2;
+                ul.scrollTop = ul.scrollHeight;
+                Write("Yönlendiriyorum...", id);
+            }, 1000);
+
+            id++;
+            setTimeout(() => {
+                window.location.href = "http://localhost:5249/Cart/Detail";
+            }, 3000);
+
+        }
+        else if ((text.includes("profil") || text.includes("ayar") || text.includes("adres"))&& (text.includes("git")|| text.includes("getir"))) {
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1 py-0" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                var htmlToAdd2 = '<li class="list-group-item my-1 px-1" style="border-style:solid; background-color:#FFEBB2; border-radius:25px;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.innerHTML += htmlToAdd2;
+                ul.scrollTop = ul.scrollHeight;
+                Write("Yönlendiriyorum...", id);
+            }, 1000);
+
+            id++;
+            setTimeout(() => {
+                window.location.href = "http://localhost:5249/User/Profile";
+            }, 3000);
+
+        }
+        else if ((text.includes("yemek"))&& (text.includes("git")|| text.includes("getir")|| text.includes("liste")|| text.includes("göster"))) {
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                var htmlToAdd2 = '<li class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.innerHTML += htmlToAdd2;
+                ul.scrollTop = ul.scrollHeight;
+                Write("Listeliyorum...", id);
+            }, 1000);
+
+            id++;
+            setTimeout(() => {
+                window.location.href = "http://localhost:5249/home/listproducts";
+            }, 3000);
+
+        }
+        else if ((text.includes("yemek")||text.includes("ne"))&& (text.includes("öner")|| text.includes("yiye")|| text.includes("liste")|| text.includes("göster"))) {
+            const foods=["Hamburger","Pizza","Döner","Kebap","Pide","Lahmacun","Sushi","Kanat","Ev Yemekleri"]
+            // Rastgele bir indeks seç
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                ul.innerHTML += '<li  class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.scrollTop = ul.scrollHeight;
+                Write("Öneriyorum...", id);
+                id++;
+            }, 1000);
+            id++;
+            setTimeout(() => {
+                ul.innerHTML += '<li class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.scrollTop = ul.scrollHeight;
+                Write(foods[ Math.floor(Math.random() * foods.length)],id)
+                id++;
+            }, 2000);
+            id++;
+            
+
+        }
+        else{
+            var htmlToAdd1 = '<li class="list-group-item text-end my-1 px-1" style="border-style:solid; border-radius:25px;">'+text+'<i class="fa-solid fa-user ps-1" style="color: #ff6600;"></i></li>';
+            ul.innerHTML += htmlToAdd1;
+            setTimeout(() => {
+                var htmlToAdd2 = '<li class="list-group-item my-1 px-1 py-0" style="border-style:solid; border-radius:25px; background-color:#FFEBB2;"><img src="./Icons/guru-chef.jpeg" style="width:50px; border-radius:50%;" class="pe-1"><span id="' + id + '"></span></li>';
+                ul.innerHTML += htmlToAdd2;
+                ul.scrollTop = ul.scrollHeight;
+                Write("Anlayamadım?", id);
+                id++;
+            },1000);
+        }
+
+        
+        ul.scrollTop = ul.scrollHeight;
+
+        document.getElementById('textChat').value="";
+
+    }
+
+    function Write(text, id) {
+        var i = 0;
+        var span = document.getElementById(id);
+
+        function addChar() {
+            if (i < text.length) {
+                span.textContent += text.charAt(i);
+                i++;
+                setTimeout(addChar, 75); // addChar çağrılmalı, adChar olarak yazılmış
+            }
+        }
+
+        addChar();
+    }
+    function toggleChatbot() {
+        var chatbot = document.getElementById('divChatbot'); // Chatbot'un divini seçiyoruz
+        var offBtn = document.getElementById('offBtn'); // Chatbot'un divini seçiyoruz
+        var onBtn = document.getElementById('onBtn'); // Chatbot'un divini seçiyoruz
+        if (chatbot.style.display == 'none') {
+            chatbot.style.display = 'block'; // Eğer chatbot gizliyse, görünür hale getiriyoruz
+            onBtn.style.display='none';
+        } else {
+            chatbot.style.display = 'none'; // Eğer chatbot görünürse, gizliyoruz
+            onBtn.style.display='block';
+        }
+    }
+
+</script>
+
